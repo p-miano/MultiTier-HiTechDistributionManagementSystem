@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6958173C-AC50-4D2A-8503-311A87326CBB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hi_TechLibrary</RootNamespace>
+    <AssemblyName>Hi-TechLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\ADO\Employee.cs" />
+    <Compile Include="BLL\ADO\Position.cs" />
+    <Compile Include="BLL\ADO\UserAccount.cs" />
+    <Compile Include="BLL\ADO\UserRole.cs" />
+    <Compile Include="BLL\EntityFramework\Authors.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\Books.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\Categories.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\CategoryController.cs" />
+    <Compile Include="BLL\EntityFramework\Customers.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\Employees.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\HiTechDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HiTechDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\HiTechDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\HiTechDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HiTechDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\OrderDetails.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\Orders.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\Positions.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\PublisherController.cs" />
+    <Compile Include="BLL\EntityFramework\Publishers.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\sp_helpdiagrams_Result.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\Status.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\EntityFramework\UserAccounts.cs">
+      <DependentUpon>HiTechDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\EntityFramework\CategoryRepository.cs" />
+    <Compile Include="DAL\EntityFramework\PublisherRepository.cs" />
+    <Compile Include="UTILITIES\EnumUtilities.cs" />
+    <Compile Include="BLL\EntityFramework\AuthorController.cs" />
+    <Compile Include="BLL\EntityFramework\BookController.cs" />
+    <Compile Include="DAL\ADO\EmployeeDB.cs" />
+    <Compile Include="DAL\ADO\PositionDB.cs" />
+    <Compile Include="DAL\ADO\StatusDB.cs" />
+    <Compile Include="DAL\ADO\UserAccountDB.cs" />
+    <Compile Include="DAL\ADO\UtilityDB.cs" />
+    <Compile Include="DAL\EntityFramework\AuthorRepository.cs" />
+    <Compile Include="DAL\EntityFramework\BookRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="VALIDATION\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="BLL\EntityFramework\HiTechDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HiTechDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="BLL\EntityFramework\HiTechDBModel.edmx.diagram">
+      <DependentUpon>HiTechDBModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BLL\EntityFramework\HiTechDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HiTechDBModel.Context.cs</LastGenOutput>
+      <DependentUpon>HiTechDBModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="BLL\EntityFramework\HiTechDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HiTechDBModel.edmx</DependentUpon>
+      <LastGenOutput>HiTechDBModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
