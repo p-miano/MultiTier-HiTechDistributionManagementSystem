@@ -437,44 +437,6 @@ namespace Inventory.GUI
             }
             PopulateBooksDataGrid(); // Refresh the grid to show new/updated book
         }
-
-
-        #endregion
-
-        #region Tab View Books Actions
-        private void tabCtrlInventory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Check if the current tab is the 'View All Books' tab
-            if (tabCtrlInventory.SelectedTab == tabPageViewAll)
-            {
-                PopulateBooksDataGrid();
-            }
-        }        
-
-        private void cbFilterCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            PopulateBooksDataGrid();
-        }
-
-        private void cbFilterPublisher_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            PopulateBooksDataGrid();
-        }
-        private void dataGridBooks_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                string selectedISBN = dataGridBooks.Rows[e.RowIndex].Cells["ISBN"].Value.ToString();
-                DialogResult dialogResult = MessageBox.Show("Do you want to update the selected book?", "Update Book", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    LoadBookForEditing(selectedISBN);
-                    tabCtrlInventory.SelectedTab = tabPageAddNew;
-                }
-            }
-        }
-        #endregion
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             // Confirm deletion with the user to avoid accidental data loss
@@ -502,16 +464,49 @@ namespace Inventory.GUI
                 }
             }
         }
+        #endregion
+
+        #region Tab View Books Actions
+        private void tabCtrlInventory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Check if the current tab is the 'View All Books' tab
+            if (tabCtrlInventory.SelectedTab == tabPageViewAll)
+            {
+                PopulateBooksDataGrid();
+            }
+        }        
+        private void cbFilterCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateBooksDataGrid();
+        }
+        private void cbFilterPublisher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateBooksDataGrid();
+        }
+        private void dataGridBooks_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string selectedISBN = dataGridBooks.Rows[e.RowIndex].Cells["ISBN"].Value.ToString();
+                DialogResult dialogResult = MessageBox.Show("Do you want to update the selected book?", "Update Book", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    LoadBookForEditing(selectedISBN);
+                    tabCtrlInventory.SelectedTab = tabPageAddNew;
+                }
+            }
+        }
+        #endregion
+
+        
         private void btnExit_Click(object sender, EventArgs e)
         {
-            // Close form with confirmation
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
                 Close();
             }
         }
-
         private void btnClearAll_Click(object sender, EventArgs e)
         {
             ResetUpdateForm();

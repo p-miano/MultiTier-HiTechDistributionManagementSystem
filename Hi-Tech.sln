@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hi-TechLibrary", "Hi-TechLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory", "Inventory\Inventory.csproj", "{18DB8A90-2631-44A6-BE4E-E61BD4A5E509}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer-Order", "Customer-Order\Customer-Order.csproj", "{A00574E4-D38F-4A06-BE4C-24B06F322F17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{18DB8A90-2631-44A6-BE4E-E61BD4A5E509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18DB8A90-2631-44A6-BE4E-E61BD4A5E509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18DB8A90-2631-44A6-BE4E-E61BD4A5E509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A00574E4-D38F-4A06-BE4C-24B06F322F17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A00574E4-D38F-4A06-BE4C-24B06F322F17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A00574E4-D38F-4A06-BE4C-24B06F322F17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A00574E4-D38F-4A06-BE4C-24B06F322F17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -65,6 +65,7 @@
       <DependentUpon>HiTechDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BLL\EntityFramework\CategoryController.cs" />
+    <Compile Include="BLL\EntityFramework\CustomerController.cs" />
     <Compile Include="BLL\EntityFramework\Customers.cs">
       <DependentUpon>HiTechDBModel.tt</DependentUpon>
     </Compile>
@@ -89,6 +90,8 @@
     <Compile Include="BLL\EntityFramework\OrderDetails.cs">
       <DependentUpon>HiTechDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BLL\EntityFramework\OrderDetailController.cs" />
+    <Compile Include="BLL\EntityFramework\OrderController.cs" />
     <Compile Include="BLL\EntityFramework\Orders.cs">
       <DependentUpon>HiTechDBModel.tt</DependentUpon>
     </Compile>
@@ -108,11 +111,16 @@
     <Compile Include="BLL\EntityFramework\Status.cs">
       <DependentUpon>HiTechDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BLL\EntityFramework\StatusController.cs" />
     <Compile Include="BLL\EntityFramework\UserAccounts.cs">
       <DependentUpon>HiTechDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\EntityFramework\CategoryRepository.cs" />
+    <Compile Include="DAL\EntityFramework\CustomerRepository.cs" />
+    <Compile Include="DAL\EntityFramework\OrderDetailRepository.cs" />
+    <Compile Include="DAL\EntityFramework\OrderRepository.cs" />
     <Compile Include="DAL\EntityFramework\PublisherRepository.cs" />
+    <Compile Include="DAL\EntityFramework\StatusRepository.cs" />
     <Compile Include="UTILITIES\EnumUtilities.cs" />
     <Compile Include="BLL\EntityFramework\AuthorController.cs" />
     <Compile Include="BLL\EntityFramework\BookController.cs" />
