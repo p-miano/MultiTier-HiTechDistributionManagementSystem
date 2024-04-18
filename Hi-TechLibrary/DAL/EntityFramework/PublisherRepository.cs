@@ -16,24 +16,21 @@ namespace Hi_TechLibrary.DAL.EntityFramework
             dbContext = new HiTechDBEntities();
         }
 
-        // Get all publishers from the database
         public IEnumerable<Publishers> GetAllPublishers()
         {
             return dbContext.Publishers.ToList();
         }
+
         #region CRUD Operations
-        // Add a new publisher to the database
         public void AddPublisher(Publishers publisher)
         {
             dbContext.Publishers.Add(publisher);
             dbContext.SaveChanges();
         }
-        // Get a publisher by ID
         public Publishers GetPublisherById(int id)
         {
             return dbContext.Publishers.Find(id);
         }
-        // Get a publisher by name
         public Publishers GetPublishByName(string name)
         {
             return dbContext.Publishers.FirstOrDefault(p => p.Name == name);

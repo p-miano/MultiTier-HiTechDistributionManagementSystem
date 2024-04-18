@@ -22,7 +22,23 @@ namespace Hi_TechLibrary.BLL.EntityFramework
             authorRepository.AddAuthor(author);
             return author.AuthorID;
         }
-
         public Authors GetAuthorById(int id) => authorRepository.GetAuthorById(id);
+    }
+
+    public class AuthorItem
+    {
+        public int AuthorID { get; set; }
+        public string AuthorName { get; set; }
+
+        public AuthorItem(int authorId, string authorName)
+        {
+            AuthorID = authorId;
+            AuthorName = authorName;
+        }
+        public override string ToString()
+        {
+            // This determines what is displayed in the ListBox
+            return AuthorName;
+        }
     }
 }

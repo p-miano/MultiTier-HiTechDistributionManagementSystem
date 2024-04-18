@@ -38,6 +38,9 @@
             this.tabCtrlInventory = new System.Windows.Forms.TabControl();
             this.tabPageAddNew = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRemoveAuthor = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAddBook = new System.Windows.Forms.Button();
             this.cbAuthor = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
@@ -58,28 +61,21 @@
             this.txtISBN = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageViewAll = new System.Windows.Forms.TabPage();
-            this.tabPageEdit = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridBooks = new System.Windows.Forms.DataGridView();
+            this.panelFilters = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.label18 = new System.Windows.Forms.Label();
+            this.cbFilterAuthor = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbFilterISBN = new System.Windows.Forms.ComboBox();
+            this.cbFilterTitle = new System.Windows.Forms.ComboBox();
+            this.cbFilterCategory = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbFilterPublisher = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             this.panelTitle.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -88,8 +84,10 @@
             this.tabPageAddNew.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPageEdit.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.tabPageViewAll.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridBooks)).BeginInit();
+            this.panelFilters.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTitle
@@ -153,6 +151,7 @@
             this.btnClearAll.TabIndex = 2;
             this.btnClearAll.Text = "Clear All";
             this.btnClearAll.UseVisualStyleBackColor = true;
+            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
             // 
             // btnExit
             // 
@@ -165,6 +164,7 @@
             this.btnExit.TabIndex = 0;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // panelMain
             // 
@@ -180,7 +180,6 @@
             this.tabCtrlInventory.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabCtrlInventory.Controls.Add(this.tabPageAddNew);
             this.tabCtrlInventory.Controls.Add(this.tabPageViewAll);
-            this.tabCtrlInventory.Controls.Add(this.tabPageEdit);
             this.tabCtrlInventory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabCtrlInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabCtrlInventory.Location = new System.Drawing.Point(0, 0);
@@ -190,6 +189,7 @@
             this.tabCtrlInventory.Size = new System.Drawing.Size(1008, 569);
             this.tabCtrlInventory.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabCtrlInventory.TabIndex = 0;
+            this.tabCtrlInventory.SelectedIndexChanged += new System.EventHandler(this.tabCtrlInventory_SelectedIndexChanged);
             // 
             // tabPageAddNew
             // 
@@ -204,6 +204,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnRemoveAuthor);
+            this.groupBox2.Controls.Add(this.btnDelete);
+            this.groupBox2.Controls.Add(this.btnAddBook);
             this.groupBox2.Controls.Add(this.cbAuthor);
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.label7);
@@ -225,6 +228,42 @@
             this.groupBox2.Size = new System.Drawing.Size(994, 509);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
+            // 
+            // btnRemoveAuthor
+            // 
+            this.btnRemoveAuthor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveAuthor.Location = new System.Drawing.Point(846, 303);
+            this.btnRemoveAuthor.Name = "btnRemoveAuthor";
+            this.btnRemoveAuthor.Size = new System.Drawing.Size(121, 32);
+            this.btnRemoveAuthor.TabIndex = 28;
+            this.btnRemoveAuthor.Text = "Remove Author";
+            this.btnRemoveAuthor.UseVisualStyleBackColor = true;
+            this.btnRemoveAuthor.Click += new System.EventHandler(this.btnRemoveAuthor_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(846, 405);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(121, 32);
+            this.btnDelete.TabIndex = 27;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAddBook
+            // 
+            this.btnAddBook.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddBook.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddBook.Location = new System.Drawing.Point(719, 405);
+            this.btnAddBook.Name = "btnAddBook";
+            this.btnAddBook.Size = new System.Drawing.Size(121, 32);
+            this.btnAddBook.TabIndex = 25;
+            this.btnAddBook.Text = "Add Book";
+            this.btnAddBook.UseVisualStyleBackColor = true;
+            this.btnAddBook.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // cbAuthor
             // 
@@ -398,6 +437,8 @@
             // 
             // tabPageViewAll
             // 
+            this.tabPageViewAll.Controls.Add(this.panel1);
+            this.tabPageViewAll.Controls.Add(this.panelFilters);
             this.tabPageViewAll.Location = new System.Drawing.Point(4, 50);
             this.tabPageViewAll.Name = "tabPageViewAll";
             this.tabPageViewAll.Padding = new System.Windows.Forms.Padding(3);
@@ -406,216 +447,162 @@
             this.tabPageViewAll.Text = "View Books";
             this.tabPageViewAll.UseVisualStyleBackColor = true;
             // 
-            // tabPageEdit
+            // panel1
             // 
-            this.tabPageEdit.Controls.Add(this.comboBox1);
-            this.tabPageEdit.Controls.Add(this.comboBox2);
-            this.tabPageEdit.Controls.Add(this.label4);
-            this.tabPageEdit.Controls.Add(this.groupBox3);
-            this.tabPageEdit.Controls.Add(this.label13);
-            this.tabPageEdit.Controls.Add(this.listBox1);
-            this.tabPageEdit.Controls.Add(this.label14);
-            this.tabPageEdit.Controls.Add(this.comboBox3);
-            this.tabPageEdit.Controls.Add(this.label15);
-            this.tabPageEdit.Controls.Add(this.maskedTextBox1);
-            this.tabPageEdit.Controls.Add(this.comboBox4);
-            this.tabPageEdit.Controls.Add(this.button1);
-            this.tabPageEdit.Controls.Add(this.label16);
-            this.tabPageEdit.Controls.Add(this.textBox3);
-            this.tabPageEdit.Controls.Add(this.label17);
-            this.tabPageEdit.Controls.Add(this.maskedTextBox2);
-            this.tabPageEdit.Controls.Add(this.label18);
-            this.tabPageEdit.Location = new System.Drawing.Point(4, 50);
-            this.tabPageEdit.Name = "tabPageEdit";
-            this.tabPageEdit.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEdit.Size = new System.Drawing.Size(1000, 515);
-            this.tabPageEdit.TabIndex = 2;
-            this.tabPageEdit.Text = "Edit Book";
-            this.tabPageEdit.UseVisualStyleBackColor = true;
+            this.panel1.Controls.Add(this.dataGridBooks);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 137);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(994, 375);
+            this.panel1.TabIndex = 2;
             // 
-            // comboBox1
+            // dataGridBooks
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(698, 411);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(272, 32);
-            this.comboBox1.TabIndex = 42;
+            this.dataGridBooks.AllowUserToOrderColumns = true;
+            this.dataGridBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridBooks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridBooks.Location = new System.Drawing.Point(0, 0);
+            this.dataGridBooks.Name = "dataGridBooks";
+            this.dataGridBooks.Size = new System.Drawing.Size(994, 375);
+            this.dataGridBooks.TabIndex = 0;
+            this.dataGridBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridBooks_CellClick);
             // 
-            // comboBox2
+            // panelFilters
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(112, 175);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(389, 32);
-            this.comboBox2.TabIndex = 41;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(632, 414);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 24);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "Status";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Location = new System.Drawing.Point(35, 249);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(317, 191);
-            this.groupBox3.TabIndex = 39;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Inventory Details";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(112, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 29);
-            this.textBox1.TabIndex = 5;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(28, 111);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 24);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Quantity";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(53, 65);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 24);
-            this.label12.TabIndex = 18;
-            this.label12.Text = "Price";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(112, 108);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(166, 29);
-            this.textBox2.TabIndex = 19;
+            this.panelFilters.Controls.Add(this.label13);
+            this.panelFilters.Controls.Add(this.cbFilterAuthor);
+            this.panelFilters.Controls.Add(this.label12);
+            this.panelFilters.Controls.Add(this.label19);
+            this.panelFilters.Controls.Add(this.label4);
+            this.panelFilters.Controls.Add(this.cbFilterISBN);
+            this.panelFilters.Controls.Add(this.cbFilterTitle);
+            this.panelFilters.Controls.Add(this.cbFilterCategory);
+            this.panelFilters.Controls.Add(this.label11);
+            this.panelFilters.Controls.Add(this.cbFilterPublisher);
+            this.panelFilters.Controls.Add(this.label8);
+            this.panelFilters.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelFilters.Location = new System.Drawing.Point(3, 3);
+            this.panelFilters.Name = "panelFilters";
+            this.panelFilters.Size = new System.Drawing.Size(994, 134);
+            this.panelFilters.TabIndex = 1;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(31, 178);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(608, 92);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(75, 24);
-            this.label13.TabIndex = 38;
-            this.label13.Text = "Authors";
+            this.label13.Size = new System.Drawing.Size(57, 20);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Author";
             // 
-            // listBox1
+            // cbFilterAuthor
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 24;
-            this.listBox1.Location = new System.Drawing.Point(636, 175);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(334, 124);
-            this.listBox1.TabIndex = 37;
+            this.cbFilterAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFilterAuthor.FormattingEnabled = true;
+            this.cbFilterAuthor.Location = new System.Drawing.Point(671, 89);
+            this.cbFilterAuthor.Name = "cbFilterAuthor";
+            this.cbFilterAuthor.Size = new System.Drawing.Size(303, 28);
+            this.cbFilterAuthor.TabIndex = 9;
+            this.cbFilterAuthor.SelectedIndexChanged += new System.EventHandler(this.cbFilterAuthor_SelectedIndexChanged);
             // 
-            // label14
+            // label12
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(831, 130);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(49, 24);
-            this.label14.TabIndex = 36;
-            this.label14.Text = "Year";
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(3, 12);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(66, 20);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Search";
             // 
-            // comboBox3
+            // label19
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(112, 127);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(712, 32);
-            this.comboBox3.TabIndex = 35;
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(591, 49);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(74, 20);
+            this.label19.TabIndex = 3;
+            this.label19.Text = "Publisher";
             // 
-            // label15
+            // label4
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(17, 130);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(89, 24);
-            this.label15.TabIndex = 34;
-            this.label15.Text = "Publisher";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(14, 92);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(38, 20);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Title";
             // 
-            // maskedTextBox1
+            // cbFilterISBN
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(886, 127);
-            this.maskedTextBox1.Mask = "0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(84, 29);
-            this.maskedTextBox1.TabIndex = 33;
-            this.maskedTextBox1.ValidatingType = typeof(int);
+            this.cbFilterISBN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFilterISBN.FormattingEnabled = true;
+            this.cbFilterISBN.Location = new System.Drawing.Point(58, 46);
+            this.cbFilterISBN.Name = "cbFilterISBN";
+            this.cbFilterISBN.Size = new System.Drawing.Size(161, 28);
+            this.cbFilterISBN.TabIndex = 4;
+            this.cbFilterISBN.SelectedIndexChanged += new System.EventHandler(this.cbFilterISBN_SelectedIndexChanged);
             // 
-            // comboBox4
+            // cbFilterTitle
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(409, 32);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(561, 32);
-            this.comboBox4.TabIndex = 32;
+            this.cbFilterTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFilterTitle.FormattingEnabled = true;
+            this.cbFilterTitle.Location = new System.Drawing.Point(58, 89);
+            this.cbFilterTitle.Name = "cbFilterTitle";
+            this.cbFilterTitle.Size = new System.Drawing.Size(527, 28);
+            this.cbFilterTitle.TabIndex = 6;
+            this.cbFilterTitle.SelectedIndexChanged += new System.EventHandler(this.cbFilterTitle_SelectedIndexChanged);
             // 
-            // button1
+            // cbFilterCategory
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(507, 175);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 32);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Add Author";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cbFilterCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFilterCategory.FormattingEnabled = true;
+            this.cbFilterCategory.Location = new System.Drawing.Point(304, 46);
+            this.cbFilterCategory.Name = "cbFilterCategory";
+            this.cbFilterCategory.Size = new System.Drawing.Size(281, 28);
+            this.cbFilterCategory.TabIndex = 0;
+            this.cbFilterCategory.SelectedIndexChanged += new System.EventHandler(this.cbFilterCategory_SelectedIndexChanged);
             // 
-            // label16
+            // label11
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(315, 35);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(85, 24);
-            this.label16.TabIndex = 30;
-            this.label16.Text = "Category";
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(5, 49);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(47, 20);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "ISBN";
             // 
-            // textBox3
+            // cbFilterPublisher
             // 
-            this.textBox3.Location = new System.Drawing.Point(112, 80);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(858, 29);
-            this.textBox3.TabIndex = 29;
+            this.cbFilterPublisher.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFilterPublisher.FormattingEnabled = true;
+            this.cbFilterPublisher.Location = new System.Drawing.Point(671, 46);
+            this.cbFilterPublisher.Name = "cbFilterPublisher";
+            this.cbFilterPublisher.Size = new System.Drawing.Size(303, 28);
+            this.cbFilterPublisher.TabIndex = 2;
+            this.cbFilterPublisher.SelectedIndexChanged += new System.EventHandler(this.cbFilterPublisher_SelectedIndexChanged);
             // 
-            // label17
+            // label8
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(61, 83);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(45, 24);
-            this.label17.TabIndex = 28;
-            this.label17.Text = "Title";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(225, 49);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 20);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Category";
             // 
-            // maskedTextBox2
+            // entityCommand1
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(112, 32);
-            this.maskedTextBox2.Mask = "000-0-00-000000-0";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(191, 29);
-            this.maskedTextBox2.TabIndex = 27;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(54, 34);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(52, 24);
-            this.label18.TabIndex = 26;
-            this.label18.Text = "ISBN";
+            this.entityCommand1.CommandTimeout = 0;
+            this.entityCommand1.CommandTree = null;
+            this.entityCommand1.Connection = null;
+            this.entityCommand1.EnablePlanCaching = true;
+            this.entityCommand1.Transaction = null;
             // 
             // FormInventory
             // 
@@ -629,7 +616,6 @@
             this.Name = "FormInventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormInventory";
-            this.Load += new System.EventHandler(this.FormInventory_Load);
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
             this.panelBottom.ResumeLayout(false);
@@ -641,10 +627,11 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPageEdit.ResumeLayout(false);
-            this.tabPageEdit.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.tabPageViewAll.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridBooks)).EndInit();
+            this.panelFilters.ResumeLayout(false);
+            this.panelFilters.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -680,28 +667,24 @@
         private System.Windows.Forms.MaskedTextBox txtISBN;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPageViewAll;
-        private System.Windows.Forms.TabPage tabPageEdit;
         private System.Windows.Forms.ComboBox cbAuthor;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridView dataGridBooks;
+        private System.Windows.Forms.Panel panelFilters;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox cbFilterPublisher;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbFilterCategory;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnAddBook;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.ComboBox cbFilterISBN;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbFilterTitle;
+        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox cbFilterAuthor;
+        private System.Windows.Forms.Button btnRemoveAuthor;
     }
 }

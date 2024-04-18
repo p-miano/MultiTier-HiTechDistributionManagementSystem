@@ -22,7 +22,6 @@ namespace Hi_TechLibrary.BLL.EntityFramework
             publisherRepository.AddPublisher(publisher);
             return publisher.PublisherID;
         }
-
         public Publishers GetPublisherById(int id) => publisherRepository.GetPublisherById(id);
         public Publishers GetPublisherByName(string name) => publisherRepository.GetPublishByName(name);
         public bool Exists(string publisherName)
