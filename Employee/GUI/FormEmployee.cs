@@ -100,13 +100,13 @@ namespace EmployeeManagement.GUI
         }
         private void UpdateEmployeeInfoUI(Employee employee)
         {
-            ClearAll();
             txtBoxEmployeeId.Text = employee.EmployeeID.ToString();
             txtBoxFirstName.Text = employee.FirstName;
             txtBoxLastName.Text = employee.LastName;
             txtBoxEmail.Text = employee.Email;
             txtBoxPhoneNumber.Text = employee.PhoneNumber;
             cmbBoxPosition.SelectedValue = employee.PositionID;
+            SetStateAfterSuccessfulSearch();
         }
         private bool ValidateEmployeeInput()
         {
@@ -258,9 +258,16 @@ namespace EmployeeManagement.GUI
                     PositionID = selectedPositionID
                 };
                 int newEmployeeId = employee.SaveEmployee(employee);
-                MessageBox.Show("Employee record saved successfully", "Save Employee");
-                this.employeeId = newEmployeeId;
-                UpdateEmployeeInfoUI(employee);
+                if (newEmployeeId > 0)
+                {
+                    MessageBox.Show("Employee record saved successfully", "Save Employee");
+                    employee.EmployeeID = newEmployeeId;
+                    UpdateEmployeeInfoUI(employee);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to save employee.", "Error");
+                }
             }
             else
             {

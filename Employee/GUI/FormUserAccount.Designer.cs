@@ -64,6 +64,7 @@
             this.btnLinkEmployee = new System.Windows.Forms.Button();
             this.panelGridView = new System.Windows.Forms.Panel();
             this.dtGridUserAccounts = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -135,7 +136,7 @@
             this.btnClearAll.Location = new System.Drawing.Point(662, 6);
             this.btnClearAll.Name = "btnClearAll";
             this.btnClearAll.Size = new System.Drawing.Size(158, 32);
-            this.btnClearAll.TabIndex = 2;
+            this.btnClearAll.TabIndex = 9;
             this.btnClearAll.Text = "Clear All";
             this.btnClearAll.UseVisualStyleBackColor = true;
             this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
@@ -148,7 +149,7 @@
             this.btnExit.Location = new System.Drawing.Point(826, 6);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(160, 32);
-            this.btnExit.TabIndex = 0;
+            this.btnExit.TabIndex = 10;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -230,7 +231,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 41;
-            this.label1.Text = "Employee ID";
+            this.label1.Text = "EmployeeManagement ID";
             // 
             // label2
             // 
@@ -298,6 +299,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.txtBoxUserId);
             this.groupBox3.Controls.Add(this.cmbBoxUserRole);
             this.groupBox3.Controls.Add(this.label4);
@@ -326,7 +328,7 @@
             this.cmbBoxUserRole.Location = new System.Drawing.Point(99, 103);
             this.cmbBoxUserRole.Name = "cmbBoxUserRole";
             this.cmbBoxUserRole.Size = new System.Drawing.Size(357, 28);
-            this.cmbBoxUserRole.TabIndex = 61;
+            this.cmbBoxUserRole.TabIndex = 2;
             // 
             // label4
             // 
@@ -364,7 +366,7 @@
             this.txtBoxUsername.Location = new System.Drawing.Point(99, 71);
             this.txtBoxUsername.Name = "txtBoxUsername";
             this.txtBoxUsername.Size = new System.Drawing.Size(357, 26);
-            this.txtBoxUsername.TabIndex = 59;
+            this.txtBoxUsername.TabIndex = 1;
             // 
             // btnListAllUsers
             // 
@@ -373,7 +375,7 @@
             this.btnListAllUsers.Location = new System.Drawing.Point(196, 240);
             this.btnListAllUsers.Name = "btnListAllUsers";
             this.btnListAllUsers.Size = new System.Drawing.Size(171, 58);
-            this.btnListAllUsers.TabIndex = 55;
+            this.btnListAllUsers.TabIndex = 4;
             this.btnListAllUsers.Text = "List all users";
             this.btnListAllUsers.UseVisualStyleBackColor = true;
             this.btnListAllUsers.Click += new System.EventHandler(this.btnListAllUsers_Click);
@@ -398,7 +400,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(267, 23);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(121, 32);
-            this.btnUpdate.TabIndex = 37;
+            this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -410,7 +412,7 @@
             this.btnSearch.Location = new System.Drawing.Point(140, 23);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(121, 32);
-            this.btnSearch.TabIndex = 36;
+            this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -422,7 +424,7 @@
             this.btnDeleteUserAccount.Location = new System.Drawing.Point(394, 23);
             this.btnDeleteUserAccount.Name = "btnDeleteUserAccount";
             this.btnDeleteUserAccount.Size = new System.Drawing.Size(121, 32);
-            this.btnDeleteUserAccount.TabIndex = 35;
+            this.btnDeleteUserAccount.TabIndex = 8;
             this.btnDeleteUserAccount.Text = "Delete";
             this.btnDeleteUserAccount.UseVisualStyleBackColor = true;
             this.btnDeleteUserAccount.Click += new System.EventHandler(this.btnDeleteUserAccount_Click);
@@ -434,7 +436,7 @@
             this.btnAddNewUserAccount.Location = new System.Drawing.Point(13, 23);
             this.btnAddNewUserAccount.Name = "btnAddNewUserAccount";
             this.btnAddNewUserAccount.Size = new System.Drawing.Size(121, 32);
-            this.btnAddNewUserAccount.TabIndex = 6;
+            this.btnAddNewUserAccount.TabIndex = 3;
             this.btnAddNewUserAccount.Text = "Add New";
             this.btnAddNewUserAccount.UseVisualStyleBackColor = true;
             this.btnAddNewUserAccount.Click += new System.EventHandler(this.btnAddNewUserAccount_Click);
@@ -446,7 +448,7 @@
             this.btnLinkEmployee.Location = new System.Drawing.Point(19, 241);
             this.btnLinkEmployee.Name = "btnLinkEmployee";
             this.btnLinkEmployee.Size = new System.Drawing.Size(171, 58);
-            this.btnLinkEmployee.TabIndex = 53;
+            this.btnLinkEmployee.TabIndex = 5;
             this.btnLinkEmployee.Text = "Update employee information";
             this.btnLinkEmployee.UseVisualStyleBackColor = true;
             this.btnLinkEmployee.Click += new System.EventHandler(this.btnLinkEmployee_Click);
@@ -470,6 +472,15 @@
             this.dtGridUserAccounts.RowTemplate.Height = 24;
             this.dtGridUserAccounts.Size = new System.Drawing.Size(998, 237);
             this.dtGridUserAccounts.TabIndex = 35;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(242, 47);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(146, 13);
+            this.label8.TabIndex = 62;
+            this.label8.Text = "ID is generated by the system";
             // 
             // FormUserAccount
             // 
@@ -538,5 +549,6 @@
         private System.Windows.Forms.Panel panelGridView;
         private System.Windows.Forms.DataGridView dtGridUserAccounts;
         private System.Windows.Forms.TextBox txtBoxPosition;
+        private System.Windows.Forms.Label label8;
     }
 }

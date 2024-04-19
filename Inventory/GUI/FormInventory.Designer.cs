@@ -105,7 +105,7 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(306, 36);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(275, 29);
+            this.lblTitle.Size = new System.Drawing.Size(377, 29);
             this.lblTitle.TabIndex = 15;
             this.lblTitle.Text = "InventoryManager Management";
             // 
@@ -148,7 +148,7 @@
             this.btnClearAll.Location = new System.Drawing.Point(662, 6);
             this.btnClearAll.Name = "btnClearAll";
             this.btnClearAll.Size = new System.Drawing.Size(158, 32);
-            this.btnClearAll.TabIndex = 2;
+            this.btnClearAll.TabIndex = 23;
             this.btnClearAll.Text = "Clear All";
             this.btnClearAll.UseVisualStyleBackColor = true;
             this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
@@ -161,7 +161,7 @@
             this.btnExit.Location = new System.Drawing.Point(826, 6);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(160, 32);
-            this.btnExit.TabIndex = 0;
+            this.btnExit.TabIndex = 22;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -188,7 +188,7 @@
             this.tabCtrlInventory.SelectedIndex = 0;
             this.tabCtrlInventory.Size = new System.Drawing.Size(1008, 569);
             this.tabCtrlInventory.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabCtrlInventory.TabIndex = 0;
+            this.tabCtrlInventory.TabIndex = 15;
             this.tabCtrlInventory.SelectedIndexChanged += new System.EventHandler(this.tabCtrlInventory_SelectedIndexChanged);
             // 
             // tabPageAddNew
@@ -236,7 +236,7 @@
             this.btnRemoveAuthor.Location = new System.Drawing.Point(846, 303);
             this.btnRemoveAuthor.Name = "btnRemoveAuthor";
             this.btnRemoveAuthor.Size = new System.Drawing.Size(121, 32);
-            this.btnRemoveAuthor.TabIndex = 28;
+            this.btnRemoveAuthor.TabIndex = 7;
             this.btnRemoveAuthor.Text = "Remove Author";
             this.btnRemoveAuthor.UseVisualStyleBackColor = true;
             this.btnRemoveAuthor.Click += new System.EventHandler(this.btnRemoveAuthor_Click);
@@ -248,7 +248,7 @@
             this.btnDelete.Location = new System.Drawing.Point(846, 405);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(121, 32);
-            this.btnDelete.TabIndex = 27;
+            this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -260,7 +260,7 @@
             this.btnAddBook.Location = new System.Drawing.Point(719, 405);
             this.btnAddBook.Name = "btnAddBook";
             this.btnAddBook.Size = new System.Drawing.Size(121, 32);
-            this.btnAddBook.TabIndex = 25;
+            this.btnAddBook.TabIndex = 10;
             this.btnAddBook.Text = "Add Book";
             this.btnAddBook.UseVisualStyleBackColor = true;
             this.btnAddBook.Click += new System.EventHandler(this.btnSave_Click);
@@ -271,7 +271,7 @@
             this.cbAuthor.Location = new System.Drawing.Point(109, 172);
             this.cbAuthor.Name = "cbAuthor";
             this.cbAuthor.Size = new System.Drawing.Size(389, 32);
-            this.cbAuthor.TabIndex = 24;
+            this.cbAuthor.TabIndex = 5;
             this.cbAuthor.SelectedIndexChanged += new System.EventHandler(this.cbAuthor_SelectedIndexChanged);
             // 
             // groupBox1
@@ -280,6 +280,7 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtQuantity);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(32, 246);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(317, 191);
@@ -289,14 +290,16 @@
             // 
             // txtPrice
             // 
+            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrice.Location = new System.Drawing.Point(112, 62);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(166, 29);
-            this.txtPrice.TabIndex = 5;
+            this.txtPrice.TabIndex = 8;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(28, 111);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 24);
@@ -306,6 +309,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(53, 65);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 24);
@@ -314,10 +318,11 @@
             // 
             // txtQuantity
             // 
+            this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantity.Location = new System.Drawing.Point(112, 108);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(166, 29);
-            this.txtQuantity.TabIndex = 19;
+            this.txtQuantity.TabIndex = 9;
             // 
             // label7
             // 
@@ -352,7 +357,7 @@
             this.cbPublisher.Location = new System.Drawing.Point(109, 124);
             this.cbPublisher.Name = "cbPublisher";
             this.cbPublisher.Size = new System.Drawing.Size(712, 32);
-            this.cbPublisher.TabIndex = 12;
+            this.cbPublisher.TabIndex = 3;
             this.cbPublisher.Leave += new System.EventHandler(this.cbPublisher_Leave);
             // 
             // label5
@@ -370,7 +375,7 @@
             this.txtYear.Mask = "0000";
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(84, 29);
-            this.txtYear.TabIndex = 10;
+            this.txtYear.TabIndex = 4;
             this.txtYear.ValidatingType = typeof(int);
             // 
             // cbCategory
@@ -379,7 +384,7 @@
             this.cbCategory.Location = new System.Drawing.Point(406, 29);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(561, 32);
-            this.cbCategory.TabIndex = 7;
+            this.cbCategory.TabIndex = 1;
             // 
             // btnAddAuthor
             // 
@@ -407,7 +412,7 @@
             this.txtTitle.Location = new System.Drawing.Point(109, 77);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(858, 29);
-            this.txtTitle.TabIndex = 3;
+            this.txtTitle.TabIndex = 2;
             // 
             // label2
             // 
@@ -425,6 +430,7 @@
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(191, 29);
             this.txtISBN.TabIndex = 1;
+            this.txtISBN.TabStop = false;
             // 
             // label1
             // 
@@ -464,7 +470,7 @@
             this.dataGridBooks.Location = new System.Drawing.Point(0, 0);
             this.dataGridBooks.Name = "dataGridBooks";
             this.dataGridBooks.Size = new System.Drawing.Size(994, 375);
-            this.dataGridBooks.TabIndex = 0;
+            this.dataGridBooks.TabIndex = 21;
             this.dataGridBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridBooks_CellClick);
             // 
             // panelFilters
@@ -503,7 +509,7 @@
             this.cbFilterAuthor.Location = new System.Drawing.Point(671, 89);
             this.cbFilterAuthor.Name = "cbFilterAuthor";
             this.cbFilterAuthor.Size = new System.Drawing.Size(303, 28);
-            this.cbFilterAuthor.TabIndex = 9;
+            this.cbFilterAuthor.TabIndex = 20;
             this.cbFilterAuthor.SelectedIndexChanged += new System.EventHandler(this.cbFilterAuthor_SelectedIndexChanged);
             // 
             // label12
@@ -543,7 +549,7 @@
             this.cbFilterISBN.Location = new System.Drawing.Point(58, 46);
             this.cbFilterISBN.Name = "cbFilterISBN";
             this.cbFilterISBN.Size = new System.Drawing.Size(161, 28);
-            this.cbFilterISBN.TabIndex = 4;
+            this.cbFilterISBN.TabIndex = 16;
             this.cbFilterISBN.SelectedIndexChanged += new System.EventHandler(this.cbFilterISBN_SelectedIndexChanged);
             // 
             // cbFilterTitle
@@ -553,7 +559,7 @@
             this.cbFilterTitle.Location = new System.Drawing.Point(58, 89);
             this.cbFilterTitle.Name = "cbFilterTitle";
             this.cbFilterTitle.Size = new System.Drawing.Size(527, 28);
-            this.cbFilterTitle.TabIndex = 6;
+            this.cbFilterTitle.TabIndex = 19;
             this.cbFilterTitle.SelectedIndexChanged += new System.EventHandler(this.cbFilterTitle_SelectedIndexChanged);
             // 
             // cbFilterCategory
@@ -563,7 +569,7 @@
             this.cbFilterCategory.Location = new System.Drawing.Point(304, 46);
             this.cbFilterCategory.Name = "cbFilterCategory";
             this.cbFilterCategory.Size = new System.Drawing.Size(281, 28);
-            this.cbFilterCategory.TabIndex = 0;
+            this.cbFilterCategory.TabIndex = 17;
             this.cbFilterCategory.SelectedIndexChanged += new System.EventHandler(this.cbFilterCategory_SelectedIndexChanged);
             // 
             // label11
@@ -583,7 +589,7 @@
             this.cbFilterPublisher.Location = new System.Drawing.Point(671, 46);
             this.cbFilterPublisher.Name = "cbFilterPublisher";
             this.cbFilterPublisher.Size = new System.Drawing.Size(303, 28);
-            this.cbFilterPublisher.TabIndex = 2;
+            this.cbFilterPublisher.TabIndex = 18;
             this.cbFilterPublisher.SelectedIndexChanged += new System.EventHandler(this.cbFilterPublisher_SelectedIndexChanged);
             // 
             // label8

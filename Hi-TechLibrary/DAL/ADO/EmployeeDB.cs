@@ -14,26 +14,21 @@ namespace Hi_TechLibrary.DAL.ADO
         {
             using (SqlConnection conn = UtilityDB.GetDBConnection())
             {
-                string insertQuery = "INSERT INTO Employees (FirstName, LastName, Email, PhoneNumber, PositionID, StatusID) " +
-                                     "VALUES (@FirstName, @LastName, @Email, @PhoneNumber, @PositionID, @StatusID); " +
-                                     "SELECT SCOPE_IDENTITY();"; // This line returns the last identity value
-
+                string insertQuery = @"
+                INSERT INTO Employees (FirstName, LastName, Email, PhoneNumber, PositionID, StatusID) 
+                VALUES (@FirstName, @LastName, @Email, @PhoneNumber, @PositionID, @StatusID);
+                SELECT SCOPE_IDENTITY();";
                 SqlCommand cmd = new SqlCommand(insertQuery, conn);
-                // Set up parameters as before
                 cmd.Parameters.AddWithValue("@FirstName", employee.FirstName);
                 cmd.Parameters.AddWithValue("@LastName", employee.LastName);
                 cmd.Parameters.AddWithValue("@Email", employee.Email);
                 cmd.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
                 cmd.Parameters.AddWithValue("@PositionID", employee.PositionID);
                 cmd.Parameters.AddWithValue("@StatusID", employee.StatusID);
-
-                // ExecuteScalar() is used because SCOPE_IDENTITY() returns a value
                 object result = cmd.ExecuteScalar();
                 return Convert.ToInt32(result);
             }
         }
-
-
         public static List<Employee> GetAllRecords()
         {
             List<Employee> listEmployees = new List<Employee>();

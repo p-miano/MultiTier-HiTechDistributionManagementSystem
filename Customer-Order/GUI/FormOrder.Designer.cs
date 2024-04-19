@@ -142,7 +142,7 @@ namespace OrderManager.GUI
             this.btnClearAll.Location = new System.Drawing.Point(662, 6);
             this.btnClearAll.Name = "btnClearAll";
             this.btnClearAll.Size = new System.Drawing.Size(158, 32);
-            this.btnClearAll.TabIndex = 2;
+            this.btnClearAll.TabIndex = 17;
             this.btnClearAll.Text = "Clear All";
             this.btnClearAll.UseVisualStyleBackColor = true;
             this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
@@ -155,7 +155,7 @@ namespace OrderManager.GUI
             this.btnExit.Location = new System.Drawing.Point(826, 6);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(160, 32);
-            this.btnExit.TabIndex = 0;
+            this.btnExit.TabIndex = 18;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -182,7 +182,7 @@ namespace OrderManager.GUI
             this.tabCtrlOrder.SelectedIndex = 0;
             this.tabCtrlOrder.Size = new System.Drawing.Size(1008, 569);
             this.tabCtrlOrder.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabCtrlOrder.TabIndex = 0;
+            this.tabCtrlOrder.TabIndex = 13;
             // 
             // tabPageAddNew
             // 
@@ -229,7 +229,7 @@ namespace OrderManager.GUI
             this.btnUpdateOrder.Location = new System.Drawing.Point(719, 471);
             this.btnUpdateOrder.Name = "btnUpdateOrder";
             this.btnUpdateOrder.Size = new System.Drawing.Size(121, 32);
-            this.btnUpdateOrder.TabIndex = 33;
+            this.btnUpdateOrder.TabIndex = 9;
             this.btnUpdateOrder.Text = "Update Order";
             this.btnUpdateOrder.UseVisualStyleBackColor = true;
             this.btnUpdateOrder.Visible = false;
@@ -243,7 +243,7 @@ namespace OrderManager.GUI
             this.listBooks.Location = new System.Drawing.Point(109, 225);
             this.listBooks.Name = "listBooks";
             this.listBooks.Size = new System.Drawing.Size(858, 173);
-            this.listBooks.TabIndex = 32;
+            this.listBooks.TabIndex = 5;
             this.listBooks.UseCompatibleStateImageBehavior = false;
             this.listBooks.View = System.Windows.Forms.View.Details;
             this.listBooks.ItemActivate += new System.EventHandler(this.listBooks_ItemActivate);
@@ -254,14 +254,14 @@ namespace OrderManager.GUI
             this.cbCustomer.Location = new System.Drawing.Point(109, 77);
             this.cbCustomer.Name = "cbCustomer";
             this.cbCustomer.Size = new System.Drawing.Size(858, 32);
-            this.cbCustomer.TabIndex = 31;
+            this.cbCustomer.TabIndex = 1;
             // 
             // txtQtty
             // 
             this.txtQtty.Location = new System.Drawing.Point(109, 176);
             this.txtQtty.Name = "txtQtty";
             this.txtQtty.Size = new System.Drawing.Size(133, 29);
-            this.txtQtty.TabIndex = 21;
+            this.txtQtty.TabIndex = 3;
             // 
             // label4
             // 
@@ -279,6 +279,7 @@ namespace OrderManager.GUI
             this.txtStatus.ReadOnly = true;
             this.txtStatus.Size = new System.Drawing.Size(336, 29);
             this.txtStatus.TabIndex = 29;
+            this.txtStatus.TabStop = false;
             // 
             // txtOrderID
             // 
@@ -287,6 +288,7 @@ namespace OrderManager.GUI
             this.txtOrderID.ReadOnly = true;
             this.txtOrderID.Size = new System.Drawing.Size(196, 29);
             this.txtOrderID.TabIndex = 21;
+            this.txtOrderID.TabStop = false;
             // 
             // btnRemoveBook
             // 
@@ -295,7 +297,7 @@ namespace OrderManager.GUI
             this.btnRemoveBook.Location = new System.Drawing.Point(846, 404);
             this.btnRemoveBook.Name = "btnRemoveBook";
             this.btnRemoveBook.Size = new System.Drawing.Size(121, 34);
-            this.btnRemoveBook.TabIndex = 28;
+            this.btnRemoveBook.TabIndex = 6;
             this.btnRemoveBook.Text = "Remove Book";
             this.btnRemoveBook.UseVisualStyleBackColor = true;
             this.btnRemoveBook.Click += new System.EventHandler(this.btnRemoveBook_Click);
@@ -308,7 +310,7 @@ namespace OrderManager.GUI
             this.btnCancelOrder.Location = new System.Drawing.Point(846, 471);
             this.btnCancelOrder.Name = "btnCancelOrder";
             this.btnCancelOrder.Size = new System.Drawing.Size(121, 32);
-            this.btnCancelOrder.TabIndex = 27;
+            this.btnCancelOrder.TabIndex = 10;
             this.btnCancelOrder.Text = "Cancel";
             this.btnCancelOrder.UseVisualStyleBackColor = true;
             this.btnCancelOrder.Click += new System.EventHandler(this.btnCancelOrder_Click);
@@ -320,7 +322,7 @@ namespace OrderManager.GUI
             this.btnPlaceOrder.Location = new System.Drawing.Point(719, 471);
             this.btnPlaceOrder.Name = "btnPlaceOrder";
             this.btnPlaceOrder.Size = new System.Drawing.Size(121, 32);
-            this.btnPlaceOrder.TabIndex = 25;
+            this.btnPlaceOrder.TabIndex = 9;
             this.btnPlaceOrder.Text = "Place Order";
             this.btnPlaceOrder.UseVisualStyleBackColor = true;
             this.btnPlaceOrder.Click += new System.EventHandler(this.btnPlaceOrder_Click);
@@ -331,7 +333,7 @@ namespace OrderManager.GUI
             this.cbBook.Location = new System.Drawing.Point(109, 125);
             this.cbBook.Name = "cbBook";
             this.cbBook.Size = new System.Drawing.Size(858, 32);
-            this.cbBook.TabIndex = 24;
+            this.cbBook.TabIndex = 2;
             // 
             // groupBox1
             // 
@@ -350,7 +352,7 @@ namespace OrderManager.GUI
             this.txtTotalItems.Location = new System.Drawing.Point(90, 39);
             this.txtTotalItems.Name = "txtTotalItems";
             this.txtTotalItems.Size = new System.Drawing.Size(106, 29);
-            this.txtTotalItems.TabIndex = 5;
+            this.txtTotalItems.TabIndex = 7;
             // 
             // label10
             // 
@@ -375,7 +377,7 @@ namespace OrderManager.GUI
             this.txtTotalAmount.Location = new System.Drawing.Point(279, 39);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.Size = new System.Drawing.Size(106, 29);
-            this.txtTotalAmount.TabIndex = 19;
+            this.txtTotalAmount.TabIndex = 8;
             // 
             // label7
             // 
@@ -393,7 +395,7 @@ namespace OrderManager.GUI
             this.btnAddBoook.Location = new System.Drawing.Point(248, 176);
             this.btnAddBoook.Name = "btnAddBoook";
             this.btnAddBoook.Size = new System.Drawing.Size(121, 29);
-            this.btnAddBoook.TabIndex = 6;
+            this.btnAddBoook.TabIndex = 4;
             this.btnAddBoook.Text = "Add Book";
             this.btnAddBoook.UseVisualStyleBackColor = true;
             this.btnAddBoook.Click += new System.EventHandler(this.btnAddBoook_Click);
@@ -457,7 +459,7 @@ namespace OrderManager.GUI
             this.dataGridOrders.Location = new System.Drawing.Point(0, 0);
             this.dataGridOrders.Name = "dataGridOrders";
             this.dataGridOrders.Size = new System.Drawing.Size(994, 404);
-            this.dataGridOrders.TabIndex = 0;
+            this.dataGridOrders.TabIndex = 16;
             this.dataGridOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridOrders_CellClick);
             this.dataGridOrders.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridOrders_DataBindingComplete);
             // 
@@ -491,7 +493,7 @@ namespace OrderManager.GUI
             this.cbFilterOrder.Location = new System.Drawing.Point(814, 54);
             this.cbFilterOrder.Name = "cbFilterOrder";
             this.cbFilterOrder.Size = new System.Drawing.Size(161, 28);
-            this.cbFilterOrder.TabIndex = 4;
+            this.cbFilterOrder.TabIndex = 15;
             this.cbFilterOrder.SelectedIndexChanged += new System.EventHandler(this.cbFilterOrder_SelectedIndexChanged);
             // 
             // label11
@@ -511,7 +513,7 @@ namespace OrderManager.GUI
             this.cbFilterCustomer.Location = new System.Drawing.Point(85, 54);
             this.cbFilterCustomer.Name = "cbFilterCustomer";
             this.cbFilterCustomer.Size = new System.Drawing.Size(670, 28);
-            this.cbFilterCustomer.TabIndex = 2;
+            this.cbFilterCustomer.TabIndex = 14;
             this.cbFilterCustomer.SelectedIndexChanged += new System.EventHandler(this.cbFilterCustomer_SelectedIndexChanged);
             // 
             // label8

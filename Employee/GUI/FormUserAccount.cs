@@ -22,7 +22,7 @@ namespace EmployeeManagement.GUI
             PopulateUserRoleComboBox();
             SetInitialState();
         }
-        // Overloaded constructor to receive the employeeId from the Employee form
+        // Overloaded constructor to receive the employeeId from the EmployeeManagement form
         public FormUserAccount(int employeeId)
         {
             this.employeeId = employeeId;
@@ -209,7 +209,7 @@ namespace EmployeeManagement.GUI
             }
             else
             {
-                MessageBox.Show("Invalid Employee ID format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid EmployeeManagement ID format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnListAllUsers_Click(object sender, EventArgs e)

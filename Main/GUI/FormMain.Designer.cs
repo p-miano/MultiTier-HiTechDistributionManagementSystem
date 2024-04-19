@@ -37,12 +37,13 @@
             this.panelMainArea = new System.Windows.Forms.Panel();
             this.gbMain = new System.Windows.Forms.GroupBox();
             this.gbLogin = new System.Windows.Forms.GroupBox();
+            this.lblShowPassword = new System.Windows.Forms.Label();
             this.lblForgotPassword = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.panelSideBar = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -121,7 +122,7 @@
             this.btnExit.Location = new System.Drawing.Point(826, 6);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(160, 32);
-            this.btnExit.TabIndex = 0;
+            this.btnExit.TabIndex = 8;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -159,26 +160,38 @@
             // 
             // gbLogin
             // 
+            this.gbLogin.Controls.Add(this.lblShowPassword);
             this.gbLogin.Controls.Add(this.lblForgotPassword);
             this.gbLogin.Controls.Add(this.btnLogin);
-            this.gbLogin.Controls.Add(this.txtPrice);
+            this.gbLogin.Controls.Add(this.txtUsername);
             this.gbLogin.Controls.Add(this.label10);
             this.gbLogin.Controls.Add(this.label9);
-            this.gbLogin.Controls.Add(this.txtQuantity);
-            this.gbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbLogin.Location = new System.Drawing.Point(145, 125);
+            this.gbLogin.Controls.Add(this.txtPassword);
+            this.gbLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbLogin.Location = new System.Drawing.Point(141, 125);
             this.gbLogin.Name = "gbLogin";
-            this.gbLogin.Size = new System.Drawing.Size(488, 254);
+            this.gbLogin.Size = new System.Drawing.Size(492, 254);
             this.gbLogin.TabIndex = 22;
             this.gbLogin.TabStop = false;
+            // 
+            // lblShowPassword
+            // 
+            this.lblShowPassword.AutoSize = true;
+            this.lblShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShowPassword.Location = new System.Drawing.Point(159, 143);
+            this.lblShowPassword.Name = "lblShowPassword";
+            this.lblShowPassword.Size = new System.Drawing.Size(80, 13);
+            this.lblShowPassword.TabIndex = 23;
+            this.lblShowPassword.Text = "show password";
+            this.lblShowPassword.Click += new System.EventHandler(this.lblShowPassword_Click);
             // 
             // lblForgotPassword
             // 
             this.lblForgotPassword.AutoSize = true;
-            this.lblForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForgotPassword.Location = new System.Drawing.Point(151, 143);
+            this.lblForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblForgotPassword.Location = new System.Drawing.Point(345, 204);
             this.lblForgotPassword.Name = "lblForgotPassword";
-            this.lblForgotPassword.Size = new System.Drawing.Size(106, 15);
+            this.lblForgotPassword.Size = new System.Drawing.Size(92, 13);
             this.lblForgotPassword.TabIndex = 22;
             this.lblForgotPassword.Text = "Forgot Password?";
             this.lblForgotPassword.Click += new System.EventHandler(this.lblForgotPassword_Click);
@@ -187,45 +200,46 @@
             // 
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(306, 170);
+            this.btnLogin.Location = new System.Drawing.Point(315, 167);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(122, 32);
-            this.btnLogin.TabIndex = 21;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // txtPrice
+            // txtUsername
             // 
-            this.txtPrice.Location = new System.Drawing.Point(144, 72);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(284, 26);
-            this.txtPrice.TabIndex = 5;
+            this.txtUsername.Location = new System.Drawing.Point(153, 69);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(284, 29);
+            this.txtUsername.TabIndex = 0;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(55, 120);
+            this.label10.Location = new System.Drawing.Point(46, 116);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 20);
+            this.label10.Size = new System.Drawing.Size(92, 24);
             this.label10.TabIndex = 20;
             this.label10.Text = "Password";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(55, 76);
+            this.label9.Location = new System.Drawing.Point(41, 72);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 20);
+            this.label9.Size = new System.Drawing.Size(97, 24);
             this.label9.TabIndex = 18;
             this.label9.Text = "Username";
             // 
-            // txtQuantity
+            // txtPassword
             // 
-            this.txtQuantity.Location = new System.Drawing.Point(144, 114);
-            this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(284, 26);
-            this.txtQuantity.TabIndex = 19;
+            this.txtPassword.Location = new System.Drawing.Point(153, 111);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(284, 29);
+            this.txtPassword.TabIndex = 1;
             // 
             // panelSideBar
             // 
@@ -258,7 +272,7 @@
             this.tableLayoutPanel2.Controls.Add(this.btnEmployee, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 18);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 10;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -271,7 +285,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(174, 528);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(174, 530);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btnOrders
@@ -279,10 +293,10 @@
             this.btnOrders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrders.Location = new System.Drawing.Point(3, 315);
+            this.btnOrders.Location = new System.Drawing.Point(3, 321);
             this.btnOrders.Name = "btnOrders";
-            this.btnOrders.Size = new System.Drawing.Size(168, 46);
-            this.btnOrders.TabIndex = 6;
+            this.btnOrders.Size = new System.Drawing.Size(168, 47);
+            this.btnOrders.TabIndex = 7;
             this.btnOrders.Text = "Orders";
             this.btnOrders.UseVisualStyleBackColor = true;
             this.btnOrders.Click += new System.EventHandler(this.btnOrders_Click);
@@ -292,10 +306,10 @@
             this.btnInventory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInventory.Location = new System.Drawing.Point(3, 263);
+            this.btnInventory.Location = new System.Drawing.Point(3, 268);
             this.btnInventory.Name = "btnInventory";
-            this.btnInventory.Size = new System.Drawing.Size(168, 46);
-            this.btnInventory.TabIndex = 5;
+            this.btnInventory.Size = new System.Drawing.Size(168, 47);
+            this.btnInventory.TabIndex = 6;
             this.btnInventory.Text = "Inventory";
             this.btnInventory.UseVisualStyleBackColor = true;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
@@ -305,10 +319,10 @@
             this.btnCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomer.Location = new System.Drawing.Point(3, 211);
+            this.btnCustomer.Location = new System.Drawing.Point(3, 215);
             this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(168, 46);
-            this.btnCustomer.TabIndex = 4;
+            this.btnCustomer.Size = new System.Drawing.Size(168, 47);
+            this.btnCustomer.TabIndex = 5;
             this.btnCustomer.Text = "Customer";
             this.btnCustomer.UseVisualStyleBackColor = true;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
@@ -318,10 +332,10 @@
             this.btnUserAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnUserAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUserAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserAccount.Location = new System.Drawing.Point(3, 159);
+            this.btnUserAccount.Location = new System.Drawing.Point(3, 162);
             this.btnUserAccount.Name = "btnUserAccount";
-            this.btnUserAccount.Size = new System.Drawing.Size(168, 46);
-            this.btnUserAccount.TabIndex = 3;
+            this.btnUserAccount.Size = new System.Drawing.Size(168, 47);
+            this.btnUserAccount.TabIndex = 4;
             this.btnUserAccount.Text = "User Account";
             this.btnUserAccount.UseVisualStyleBackColor = true;
             this.btnUserAccount.Click += new System.EventHandler(this.btnUserAccount_Click);
@@ -331,10 +345,10 @@
             this.btnEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmployee.Location = new System.Drawing.Point(3, 107);
+            this.btnEmployee.Location = new System.Drawing.Point(3, 109);
             this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Size = new System.Drawing.Size(168, 46);
-            this.btnEmployee.TabIndex = 1;
+            this.btnEmployee.Size = new System.Drawing.Size(168, 47);
+            this.btnEmployee.TabIndex = 3;
             this.btnEmployee.Text = "Employee";
             this.btnEmployee.UseVisualStyleBackColor = true;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
@@ -347,7 +361,7 @@
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.tableLayoutPanel2.SetRowSpan(this.label1, 2);
-            this.label1.Size = new System.Drawing.Size(168, 104);
+            this.label1.Size = new System.Drawing.Size(168, 106);
             this.label1.TabIndex = 2;
             this.label1.Text = "Management Modules";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -400,11 +414,12 @@
         private System.Windows.Forms.Button btnCustomer;
         private System.Windows.Forms.Button btnUserAccount;
         private System.Windows.Forms.GroupBox gbLogin;
-        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label lblForgotPassword;
+        private System.Windows.Forms.Label lblShowPassword;
     }
 }

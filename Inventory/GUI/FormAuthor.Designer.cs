@@ -37,15 +37,15 @@
             this.panelTitle = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnClearAll = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panelTitle.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -54,7 +54,7 @@
             this.txtFirstName.Location = new System.Drawing.Point(278, 82);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(318, 29);
-            this.txtFirstName.TabIndex = 5;
+            this.txtFirstName.TabIndex = 0;
             // 
             // label2
             // 
@@ -72,7 +72,7 @@
             this.txtLastName.Location = new System.Drawing.Point(278, 117);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(318, 29);
-            this.txtLastName.TabIndex = 6;
+            this.txtLastName.TabIndex = 1;
             // 
             // txtEmail
             // 
@@ -80,7 +80,7 @@
             this.txtEmail.Location = new System.Drawing.Point(278, 152);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(318, 29);
-            this.txtEmail.TabIndex = 7;
+            this.txtEmail.TabIndex = 2;
             // 
             // label1
             // 
@@ -130,20 +130,6 @@
             this.panel1.Size = new System.Drawing.Size(800, 51);
             this.panel1.TabIndex = 28;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txtFirstName);
-            this.panel2.Controls.Add(this.txtEmail);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.txtLastName);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 100);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 299);
-            this.panel2.TabIndex = 29;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 6;
@@ -162,9 +148,21 @@
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 51);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(535, 7);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(126, 37);
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnClearAll
             // 
@@ -174,7 +172,7 @@
             this.btnClearAll.Location = new System.Drawing.Point(7, 7);
             this.btnClearAll.Name = "btnClearAll";
             this.btnClearAll.Size = new System.Drawing.Size(126, 37);
-            this.btnClearAll.TabIndex = 2;
+            this.btnClearAll.TabIndex = 5;
             this.btnClearAll.Text = "Clear All";
             this.btnClearAll.UseVisualStyleBackColor = true;
             // 
@@ -186,22 +184,24 @@
             this.btnOk.Location = new System.Drawing.Point(667, 7);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(126, 37);
-            this.btnOk.TabIndex = 0;
+            this.btnOk.TabIndex = 3;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // btnCancel
+            // panel2
             // 
-            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(535, 7);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(126, 37);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.panel2.Controls.Add(this.txtFirstName);
+            this.panel2.Controls.Add(this.txtEmail);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.txtLastName);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 100);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 299);
+            this.panel2.TabIndex = 29;
             // 
             // FormAuthor
             // 
@@ -217,9 +217,9 @@
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

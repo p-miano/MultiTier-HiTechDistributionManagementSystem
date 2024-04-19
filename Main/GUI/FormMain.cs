@@ -50,7 +50,8 @@ namespace Main.GUI
         }
         private void lblForgotPassword_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Forgot password functionality is not implemented yet.");
+            FormChangePassword formChangePassword = new FormChangePassword();
+            formChangePassword.ShowDialog();
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -58,6 +59,20 @@ namespace Main.GUI
             if (dialogResult == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+        }
+
+        private void lblShowPassword_Click(object sender, EventArgs e)
+        {
+            if (lblShowPassword.Text == "show password")
+            {
+                lblShowPassword.Text = "hide password";
+                txtPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                lblShowPassword.Text = "show password";
+                txtPassword.PasswordChar = '*';
             }
         }
     }
