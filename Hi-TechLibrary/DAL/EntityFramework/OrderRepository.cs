@@ -56,7 +56,7 @@ namespace Hi_TechLibrary.DAL.EntityFramework
             var order = dbContext.Orders.Find(id);
             if (order != null)
             {
-                order.StatusID = 3;
+                order.StatusID = 5;
                 dbContext.SaveChanges();
             }
         }

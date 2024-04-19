@@ -40,6 +40,7 @@ namespace Customer_Order.GUI
             this.tabCtrlOrder = new System.Windows.Forms.TabControl();
             this.tabPageAddNew = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnUpdateOrder = new System.Windows.Forms.Button();
             this.listBooks = new System.Windows.Forms.ListView();
             this.cbCustomer = new System.Windows.Forms.ComboBox();
             this.txtQtty = new System.Windows.Forms.TextBox();
@@ -69,7 +70,6 @@ namespace Customer_Order.GUI
             this.label11 = new System.Windows.Forms.Label();
             this.cbFilterCustomer = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnUpdateOrder = new System.Windows.Forms.Button();
             this.panelTitle.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -220,6 +220,20 @@ namespace Customer_Order.GUI
             this.groupBox2.Size = new System.Drawing.Size(994, 509);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
+            // 
+            // btnUpdateOrder
+            // 
+            this.btnUpdateOrder.Enabled = false;
+            this.btnUpdateOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateOrder.Location = new System.Drawing.Point(719, 471);
+            this.btnUpdateOrder.Name = "btnUpdateOrder";
+            this.btnUpdateOrder.Size = new System.Drawing.Size(121, 32);
+            this.btnUpdateOrder.TabIndex = 33;
+            this.btnUpdateOrder.Text = "Update Order";
+            this.btnUpdateOrder.UseVisualStyleBackColor = true;
+            this.btnUpdateOrder.Visible = false;
+            this.btnUpdateOrder.Click += new System.EventHandler(this.btnUpdateOrder_Click);
             // 
             // listBooks
             // 
@@ -434,13 +448,18 @@ namespace Customer_Order.GUI
             // 
             // dataGridOrders
             // 
+            this.dataGridOrders.AllowUserToAddRows = false;
+            this.dataGridOrders.AllowUserToDeleteRows = false;
             this.dataGridOrders.AllowUserToOrderColumns = true;
+            this.dataGridOrders.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridOrders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridOrders.Location = new System.Drawing.Point(0, 0);
             this.dataGridOrders.Name = "dataGridOrders";
             this.dataGridOrders.Size = new System.Drawing.Size(994, 404);
             this.dataGridOrders.TabIndex = 0;
+            this.dataGridOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridOrders_CellClick);
+            this.dataGridOrders.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridOrders_DataBindingComplete);
             // 
             // panelFilters
             // 
@@ -469,16 +488,17 @@ namespace Customer_Order.GUI
             // 
             this.cbFilterOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFilterOrder.FormattingEnabled = true;
-            this.cbFilterOrder.Location = new System.Drawing.Point(58, 46);
+            this.cbFilterOrder.Location = new System.Drawing.Point(814, 54);
             this.cbFilterOrder.Name = "cbFilterOrder";
             this.cbFilterOrder.Size = new System.Drawing.Size(161, 28);
             this.cbFilterOrder.TabIndex = 4;
+            this.cbFilterOrder.SelectedIndexChanged += new System.EventHandler(this.cbFilterOrder_SelectedIndexChanged);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(5, 49);
+            this.label11.Location = new System.Drawing.Point(761, 57);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(49, 20);
             this.label11.TabIndex = 5;
@@ -488,34 +508,21 @@ namespace Customer_Order.GUI
             // 
             this.cbFilterCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFilterCustomer.FormattingEnabled = true;
-            this.cbFilterCustomer.Location = new System.Drawing.Point(304, 46);
+            this.cbFilterCustomer.Location = new System.Drawing.Point(85, 54);
             this.cbFilterCustomer.Name = "cbFilterCustomer";
             this.cbFilterCustomer.Size = new System.Drawing.Size(670, 28);
             this.cbFilterCustomer.TabIndex = 2;
+            this.cbFilterCustomer.SelectedIndexChanged += new System.EventHandler(this.cbFilterCustomer_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(225, 49);
+            this.label8.Location = new System.Drawing.Point(6, 57);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 20);
             this.label8.TabIndex = 1;
             this.label8.Text = "Customer";
-            // 
-            // btnUpdateOrder
-            // 
-            this.btnUpdateOrder.Enabled = false;
-            this.btnUpdateOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateOrder.Location = new System.Drawing.Point(719, 471);
-            this.btnUpdateOrder.Name = "btnUpdateOrder";
-            this.btnUpdateOrder.Size = new System.Drawing.Size(121, 32);
-            this.btnUpdateOrder.TabIndex = 33;
-            this.btnUpdateOrder.Text = "Update Order";
-            this.btnUpdateOrder.UseVisualStyleBackColor = true;
-            this.btnUpdateOrder.Visible = false;
-            this.btnUpdateOrder.Click += new System.EventHandler(this.btnUpdateOrder_Click);
             // 
             // FormOrder
             // 

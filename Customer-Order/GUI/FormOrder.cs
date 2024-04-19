@@ -23,6 +23,9 @@ namespace Customer_Order.GUI
             DesignTabButtons();
             PopulateCustomersComboBox();
             PopulateBookComboBox();
+            PopulateFilterCustomerComboBox();
+            PopulateFilterOrderComboBox();
+            PopulateOrdersDataGrid();
             SetListView();
         }
 
@@ -86,6 +89,113 @@ namespace Customer_Order.GUI
             cbBook.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbBook.SelectedIndex = -1;
         }
+        private void PopulateFilterCustomerComboBox()
+        {
+            try
+            {
+                // Fetch customers and sort them by name
+                var customersList = customerController.GetAllCustomers()
+                                                      .OrderBy(c => c.Name)
+                                                      .Select(c => new KeyValuePair<int, string>(c.CustomerID, c.Name))
+                                                      .ToList();
+                if (customersList.Count > 0)
+                {
+                    cbFilterCustomer.DataSource = customersList;
+                    cbFilterCustomer.ValueMember = "Key";
+                    cbFilterCustomer.DisplayMember = "Value";
+                    // Setting up autocomplete
+                    cbFilterCustomer.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    cbFilterCustomer.AutoCompleteSource = AutoCompleteSource.ListItems;
+                    cbFilterCustomer.AutoCompleteCustomSource.AddRange(customersList.Select(c => c.Value).ToArray());
+                    cbFilterCustomer.SelectedIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("No customers found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading customer data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void PopulateFilterOrderComboBox()
+        {
+            var orderController = new OrderController();
+            IEnumerable<Orders> orders;
+
+            // Check if a customer is selected
+            if (cbFilterCustomer.SelectedValue != null && int.TryParse(cbFilterCustomer.SelectedValue.ToString(), out int customerId))
+            {
+                // Fetch orders only for the selected customer
+                orders = orderController.GetAllOrders().Where(o => o.CustomerID == customerId);
+            }
+            else
+            {
+                // Fetch all orders if no customer is selected
+                orders = orderController.GetAllOrders();
+            }
+
+            var orderList = orders.Select(o => new {
+                o.OrderID,
+                DisplayValue = o.OrderID
+            }).ToList();
+
+            if (orderList.Any())
+            {
+                cbFilterOrder.DataSource = orderList;
+                cbFilterOrder.DisplayMember = "DisplayValue";
+                cbFilterOrder.ValueMember = "OrderID";
+                cbFilterOrder.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                cbFilterOrder.AutoCompleteSource = AutoCompleteSource.ListItems;
+                cbFilterOrder.SelectedIndex = -1;
+            }
+            else
+            {
+                cbFilterOrder.DataSource = null;
+                MessageBox.Show("No orders found.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void PopulateOrdersDataGrid()
+        {
+            int? selectedCustomerId = cbFilterCustomer.SelectedValue as int?;
+            int? selectedOrderId = cbFilterOrder.SelectedValue as int?;
+            // Initialize DataTable and define columns
+            DataTable table = new DataTable();
+            table.Columns.Add("OrderID", typeof(int));
+            table.Columns.Add("CustomerName", typeof(string));
+            table.Columns.Add("OrderDate", typeof(DateTime));
+            table.Columns.Add("TotalAmount", typeof(decimal));
+            table.Columns.Add("Status", typeof(string));
+            // Fetch and filter order data based on selected criteria
+            var ordersList = new OrderController().GetAllOrders()
+                .Where(o => (!selectedCustomerId.HasValue || o.CustomerID == selectedCustomerId) &&
+                            (!selectedOrderId.HasValue || o.OrderID == selectedOrderId))
+                .Select(o => new
+                {
+                    o.OrderID,
+                    CustomerName = o.Customers?.Name ?? "Unknown",
+                    OrderDate = o.OrderDate ?? DateTime.MinValue,
+                    TotalAmount = o.TotalAmount ?? 0m,
+                    Status = o.Status?.State ?? "Unknown"
+                })
+                .ToList();
+            // Populate the DataTable with the filtered order data
+            foreach (var order in ordersList)
+            {
+                table.Rows.Add(order.OrderID, order.CustomerName, order.OrderDate, order.TotalAmount, order.Status);
+            }
+            // Assign the DataTable as the DataSource for the DataGridView
+            dataGridOrders.DataSource = table;
+            // Set properties to enable basic functionalities
+            dataGridOrders.AutoResizeColumns();
+            dataGridOrders.ReadOnly = true;
+            dataGridOrders.AllowUserToAddRows = false;
+            dataGridOrders.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            // Clear any default selection
+            dataGridOrders.ClearSelection();
+            SetDataGridView();
+        }
         private void SetListView()
         {
             // Add columns to the ListView
@@ -98,6 +208,28 @@ namespace Customer_Order.GUI
             listBooks.Columns[1].Width = 80; 
             listBooks.Columns[2].Width = 160;  
             listBooks.Columns[3].Width = 534;
+        }
+        private void SetDataGridView()
+        {
+            // Ensure the columns are created
+            dataGridOrders.AutoGenerateColumns = true;
+            // Set custom header text for each column
+            dataGridOrders.Columns["OrderID"].HeaderText = "Order";
+            dataGridOrders.Columns["CustomerName"].HeaderText = "Customer";
+            dataGridOrders.Columns["OrderDate"].HeaderText = "Order Date and Time";
+            dataGridOrders.Columns["TotalAmount"].HeaderText = "Total Amount";
+            dataGridOrders.Columns["Status"].HeaderText = "Status";
+            //Set the width of each column
+            dataGridOrders.Columns["OrderID"].Width = 90;
+            dataGridOrders.Columns["CustomerName"].Width = 350;
+            dataGridOrders.Columns["OrderDate"].Width = 215;
+            dataGridOrders.Columns["TotalAmount"].Width = 152;
+            dataGridOrders.Columns["Status"].Width = 130;
+            // Customize appearance
+            dataGridOrders.ColumnHeadersDefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12,FontStyle.Bold);
+            dataGridOrders.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12);
+            // Set read-only mode
+            dataGridOrders.ReadOnly = true;
         }
         private void UpdateTotals()
         {
@@ -137,13 +269,15 @@ namespace Customer_Order.GUI
             if (order != null)
             {
                 txtOrderID.Text = order.OrderID.ToString();
+                cbCustomer.SelectedValue = order.CustomerID;
+                txtTotalItems.Text = order.OrderDetails.Sum(d => d.Quantity).ToString();
+                txtTotalAmount.Text = order.TotalAmount?.ToString("F2");
                 if (order.StatusID.HasValue)
                 {
                     StatusController statusController = new StatusController();
                     var status = statusController.GetStatusById(order.StatusID.Value);
                     txtStatus.Text = status != null ? status.State : "Unknown";
                     btnCancelOrder.Enabled = true;
-                    tabPageAddNew.Text = "Update Order";
                     btnUpdateOrder.Visible = true;
                     btnUpdateOrder.Enabled = true;
                     btnPlaceOrder.Enabled = false;
@@ -152,17 +286,32 @@ namespace Customer_Order.GUI
                 {
                     txtStatus.Text = "Unknown";
                 }
+                // Clear and fill the books list
+                listBooks.Items.Clear();
+                foreach (var detail in order.OrderDetails)
+                {
+                    var book = bookController.GetBookByISBN(detail.BookID);
+                    if (book != null)
+                    {
+                        var listViewItem = new ListViewItem(new[]
+                        {
+                            detail.Quantity.ToString(),
+                            detail.Price?.ToString("F2"),
+                            book.ISBN,
+                            book.Title
+                        });
+                        listBooks.Items.Add(listViewItem);
+                    }
+                }
+                // Update UI based on the order details
+                tabPageAddNew.Text = "Update Order";
             }
             else
             {
                 MessageBox.Show("Failed to retrieve order information.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
         #endregion
-
-
 
         #region Tab Add Order Events
         private void btnAddBoook_Click(object sender, EventArgs e)
@@ -316,37 +465,6 @@ namespace Customer_Order.GUI
                 MessageBox.Show("Order not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion
-
-
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Close();
-            }
-        }
-
-        private void btnClearAll_Click(object sender, EventArgs e)
-        {
-            // Clear all input fields and lists
-            cbCustomer.SelectedIndex = -1;
-            listBooks.Items.Clear();
-            txtTotalItems.Text = "0";
-            txtTotalAmount.Text = "0.00";
-            txtOrderID.Clear();
-            txtStatus.Clear();
-
-            // Reset button states
-            btnPlaceOrder.Enabled = true;
-            btnUpdateOrder.Enabled = false;
-            btnUpdateOrder.Visible = false;
-            tabPageAddNew.Text = "Place Order";
-            btnCancelOrder.Enabled = false;
-        }
-
         private void btnCancelOrder_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtOrderID.Text))
@@ -370,6 +488,65 @@ namespace Customer_Order.GUI
             {
                 MessageBox.Show("Failed to cancel the order: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        #endregion
+
+        #region Tab View Orders Events
+        private void cbFilterCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateFilterOrderComboBox();
+            PopulateOrdersDataGrid();
+        }
+        private void cbFilterOrder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateOrdersDataGrid();
+        }
+        private void dataGridOrders_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridOrders.ClearSelection();
+        }
+        private void dataGridOrders_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                int selectedOrderId = int.Parse(dataGridOrders.Rows[e.RowIndex].Cells["OrderID"].Value.ToString());
+                DialogResult dialogResult = MessageBox.Show("Do you want to view details of the selected order?", "View Order", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    RetrieveAndDisplayOrderInfo(selectedOrderId);
+                    tabCtrlOrder.SelectedTab = tabPageAddNew;
+                }
+            }
+        }
+        #endregion
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit?", "Exit Application", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            // Clear all input fields and lists
+            cbCustomer.SelectedIndex = -1;
+            listBooks.Items.Clear();
+            txtTotalItems.Text = "0";
+            txtTotalAmount.Text = "0.00";
+            txtOrderID.Clear();
+            txtStatus.Clear();
+            cbFilterOrder.SelectedIndex = -1;
+            cbFilterCustomer.SelectedIndex = -1;
+            dataGridOrders.ClearSelection();
+
+            // Reset button states
+            btnPlaceOrder.Enabled = true;
+            btnUpdateOrder.Enabled = false;
+            btnUpdateOrder.Visible = false;
+            tabPageAddNew.Text = "Place Order";
+            btnCancelOrder.Enabled = false;
         }
     }
 }
