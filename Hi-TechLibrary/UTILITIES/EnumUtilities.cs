@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hi_TechLibrary.BLL.ADO
+namespace Hi_TechLibrary.UTILITIES
 {
     public static class EnumUtilities
     {

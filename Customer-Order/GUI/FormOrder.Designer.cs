@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Customer_Order.GUI
+namespace OrderManager.GUI
 {
     partial class FormOrder
     {

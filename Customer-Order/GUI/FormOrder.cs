@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Hi_TechLibrary.BLL.EntityFramework;
 using Microsoft.VisualBasic;
 
-namespace Customer_Order.GUI
+namespace OrderManager.GUI
 {
     public partial class FormOrder : Form
     {

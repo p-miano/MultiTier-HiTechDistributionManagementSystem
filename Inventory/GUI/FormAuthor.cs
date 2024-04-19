@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Inventory.GUI
+namespace InventoryManager.GUI
 {
     public partial class FormAuthor : Form
     {

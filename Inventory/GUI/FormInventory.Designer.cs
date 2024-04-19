@@ -1,4 +1,4 @@
-﻿namespace Inventory.GUI
+﻿namespace InventoryManager.GUI
 {
     partial class FormInventory
     {
@@ -107,7 +107,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(275, 29);
             this.lblTitle.TabIndex = 15;
-            this.lblTitle.Text = "Inventory Management";
+            this.lblTitle.Text = "InventoryManager Management";
             // 
             // panelBottom
             // 
@@ -285,7 +285,7 @@
             this.groupBox1.Size = new System.Drawing.Size(317, 191);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Inventory Details";
+            this.groupBox1.Text = "InventoryManager Details";
             // 
             // txtPrice
             // 

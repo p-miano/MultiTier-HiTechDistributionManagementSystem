@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OrderManager.Properties
+namespace EmployeeManagement.Properties
 {
 
 

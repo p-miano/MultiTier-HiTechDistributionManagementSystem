@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Hi_TechLibrary.BLL.EntityFramework;
 using Microsoft.VisualBasic;
 
-namespace Inventory.GUI
+namespace InventoryManager.GUI
 {
     public partial class FormInventory : Form
     {

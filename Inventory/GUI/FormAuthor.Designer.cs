@@ -1,4 +1,4 @@
-﻿namespace Inventory.GUI
+﻿namespace InventoryManager.GUI
 {
     partial class FormAuthor
     {
