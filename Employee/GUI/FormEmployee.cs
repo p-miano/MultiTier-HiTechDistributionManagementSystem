@@ -178,9 +178,25 @@ namespace EmployeeManagement.GUI
         }
         private void DisplaySearchResults(List<Employee> employees)
         {
-            if (employees.Any(emp => emp != null))
+            if (employees.Any())
             {
-                dtGridEmployees.DataSource = employees.Where(emp => emp != null).ToList();
+                var dataSource = employees.Select(emp => new
+                {
+                    EmployeeID = emp.EmployeeID,
+                    FirstName = emp.FirstName,
+                    LastName = emp.LastName,
+                    Email = emp.Email,
+                    PhoneNumber = emp.PhoneNumber,
+                    PositionTitle = new Position().GetPositionById(emp.PositionID) // Assume GetPositionById() returns the position title
+                }).ToList();
+                dtGridEmployees.DataSource = dataSource;
+                dtGridEmployees.Columns["EmployeeID"].HeaderText = "Employee ID";
+                dtGridEmployees.Columns["FirstName"].HeaderText = "First Name";
+                dtGridEmployees.Columns["LastName"].HeaderText = "Last Name";
+                dtGridEmployees.Columns["Email"].HeaderText = "Email";
+                dtGridEmployees.Columns["PhoneNumber"].HeaderText = "Phone Number";
+                dtGridEmployees.Columns["PositionTitle"].HeaderText = "Position";
+                dtGridEmployees.Columns["PositionTitle"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             else
             {
@@ -188,6 +204,7 @@ namespace EmployeeManagement.GUI
                 dtGridEmployees.DataSource = null;
             }
         }
+
         #endregion
 
 
@@ -381,8 +398,31 @@ namespace EmployeeManagement.GUI
                 this.Close();
             }
         }
+
         #endregion
 
-
+        private void dtGridEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dtGridEmployees.Rows[e.RowIndex];
+                txtBoxEmployeeId.Text = row.Cells["EmployeeID"].Value.ToString();
+                txtBoxFirstName.Text = row.Cells["FirstName"].Value.ToString();
+                txtBoxLastName.Text = row.Cells["LastName"].Value.ToString();
+                txtBoxEmail.Text = row.Cells["Email"].Value.ToString();
+                txtBoxPhoneNumber.Text = row.Cells["PhoneNumber"].Value.ToString();
+                string positionTitle = row.Cells["PositionTitle"].Value.ToString();
+                foreach (var item in cmbBoxPosition.Items)
+                {
+                    KeyValuePair<int, string> pair = (KeyValuePair<int, string>)item;
+                    if (pair.Value == positionTitle)
+                    {
+                        cmbBoxPosition.SelectedValue = pair.Key;
+                        break;
+                    }
+                }
+                SetStateAfterSuccessfulSearch();
+            }
+        }
     }
 }

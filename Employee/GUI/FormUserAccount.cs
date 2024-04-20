@@ -21,6 +21,7 @@ namespace EmployeeManagement.GUI
             InitializeComponent();
             PopulateUserRoleComboBox();
             SetInitialState();
+            InitializeDataGridView();
         }
         // Overloaded constructor to receive the employeeId from the EmployeeManagement form
         public FormUserAccount(int employeeId, bool isNewAccount)
@@ -28,6 +29,7 @@ namespace EmployeeManagement.GUI
             InitializeComponent();
             PopulateUserRoleComboBox();
             FillEmployeeInfo(employeeId);
+            InitializeDataGridView();
             if (isNewAccount)
             {
                 SetStateForCreatingNewUser();
@@ -91,6 +93,13 @@ namespace EmployeeManagement.GUI
             txtBoxUsername.ReadOnly = false;
             cmbBoxUserRole.Enabled = true;
         }
+        private void InitializeDataGridView()
+        {
+            dtGridUserAccounts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtGridUserAccounts.ReadOnly = true;
+            dtGridUserAccounts.AllowUserToAddRows = false;
+        }
+
         private void FillEmployeeInfo(int employeeId)
         {
             Employee employee = new Employee().SearchEmployeeById(employeeId);
@@ -203,9 +212,27 @@ namespace EmployeeManagement.GUI
         }
         private void DisplaySearchResults(List<UserAccount> userAccounts)
         {
-            if (userAccounts.Any(user => user != null))
+            if (userAccounts.Any())
             {
-                dtGridUserAccounts.DataSource = userAccounts.Where(user => user != null).ToList();
+                dtGridUserAccounts.DataSource = userAccounts.Select(u => new
+                {
+                    UserID = u.UserID,
+                    EmployeeID = u.EmployeeID,
+                    Username = u.Username,
+                    UserRole = EnumUtilities.GetEnumDescription(u.UserRole),
+                    DateCreated = u.DateCreated.ToShortDateString(),
+                    DateModified = u.DateModified.HasValue ? u.DateModified.Value.ToShortDateString() : "N/A",
+                    MustChangePassword = u.MustChangePassword ? "Yes" : "No"
+                }).ToList();
+                dtGridUserAccounts.Columns["EmployeeID"].HeaderText = "Employee ID";
+                dtGridUserAccounts.Columns["UserID"].HeaderText = "User ID";
+                dtGridUserAccounts.Columns["Username"].HeaderText = "Username";
+                dtGridUserAccounts.Columns["UserRole"].HeaderText = "Role";
+                dtGridUserAccounts.Columns["DateCreated"].HeaderText = "Date Created";
+                dtGridUserAccounts.Columns["DateModified"].HeaderText = "Date Modified";
+                dtGridUserAccounts.Columns["MustChangePassword"].HeaderText = "Change Password";
+                dtGridUserAccounts.ClearSelection();
+                dtGridUserAccounts.CurrentCell = null;
             }
             else
             {
@@ -377,5 +404,22 @@ namespace EmployeeManagement.GUI
         }
         #endregion
 
+        private void dtGridUserAccounts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                DataGridViewRow row = dtGridUserAccounts.Rows[e.RowIndex];
+                txtBoxUserId.Text = row.Cells["UserID"].Value.ToString();
+                txtBoxUsername.Text = row.Cells["Username"].Value.ToString();
+                string userRoleDescription = row.Cells["UserRole"].Value.ToString();
+                cmbBoxUserRole.SelectedItem = cmbBoxUserRole.Items.Cast<string>().FirstOrDefault(r => r == userRoleDescription);
+                if (int.TryParse(row.Cells["EmployeeID"].Value?.ToString(), out int empId))
+                {
+                    employeeId = empId;
+                    FillEmployeeInfo(employeeId.Value);
+                }
+                SetStateAfterSuccessfulSearch();
+            }
+        }
     }
 }

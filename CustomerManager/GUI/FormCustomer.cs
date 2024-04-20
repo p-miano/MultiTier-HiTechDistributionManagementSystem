@@ -35,6 +35,7 @@ namespace CustomerManager.GUI
         #region Form Utlities
         private void SetInitialState()
         {
+            btnAddNew.Enabled = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
             btnUpdateDatabase.Enabled = false;
@@ -48,6 +49,7 @@ namespace CustomerManager.GUI
             btnUpdateDatabase.Enabled = true;
             btnClearAll.Enabled = true;
             txtBoxCustomerId.ReadOnly = true;
+            btnAddNew.Enabled = false;
         }
         private void SetStateAfterListOrFailedSearch()
         {
@@ -202,7 +204,18 @@ namespace CustomerManager.GUI
         private void btnListAll_Click(object sender, EventArgs e)
         {
             dtGridCustomers.DataSource = dsCustomersDB.Tables["Customers"];
-            SetStateAfterListOrFailedSearch();
+            dtGridCustomers.Columns["CustomerID"].HeaderText = "Customer ID";
+            dtGridCustomers.Columns["Name"].HeaderText = "Full Name";
+            dtGridCustomers.Columns["Street"].HeaderText = "Street";
+            dtGridCustomers.Columns["StreetNumber"].HeaderText = "Number";
+            dtGridCustomers.Columns["City"].HeaderText = "City";
+            dtGridCustomers.Columns["PostalCode"].HeaderText = "Postal Code";
+            dtGridCustomers.Columns["PhoneNumber"].HeaderText = "Phone";
+            dtGridCustomers.Columns["FaxNumber"].HeaderText = "Fax";
+            dtGridCustomers.Columns["CreditLimit"].HeaderText = "Credit Limit";
+            dtGridCustomers.Columns["StatusID"].Visible = false;
+            dtGridCustomers.ClearSelection();
+            SetStateAfterSuccessfulSearch();
         }
         private void btnClearAll_Click(object sender, EventArgs e)
         {
@@ -227,5 +240,23 @@ namespace CustomerManager.GUI
             }
         }
         #endregion
+
+        private void dtGridCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dtGridCustomers.Rows[e.RowIndex];
+                txtBoxCustomerId.Text = row.Cells["CustomerID"].Value.ToString();
+                txtBoxName.Text = row.Cells["Name"].Value.ToString();
+                txtBoxStreet.Text = row.Cells["Street"].Value.ToString();
+                txtBoxStreetNumber.Text = row.Cells["StreetNumber"].Value.ToString();
+                txtBoxCity.Text = row.Cells["City"].Value.ToString();
+                txtBoxPostalCode.Text = row.Cells["PostalCode"].Value.ToString();
+                txtBoxPhoneNumber.Text = row.Cells["PhoneNumber"].Value.ToString();
+                txtBoxFaxNumber.Text = row.Cells["FaxNumber"].Value.ToString();
+                txtBoxCreditLimit.Text = row.Cells["CreditLimit"].Value.ToString();
+                SetStateAfterSuccessfulSearch();
+            }
+        }
     }
 }
