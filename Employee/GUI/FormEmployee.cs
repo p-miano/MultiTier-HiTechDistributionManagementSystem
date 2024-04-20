@@ -87,17 +87,6 @@ namespace EmployeeManagement.GUI
             dtGridEmployees.DataSource = null;
             SetInitialState();
         }
-        private void UpdateEmployeeIdFromTextBox()
-        {
-            if (int.TryParse(txtBoxEmployeeId.Text.Trim(), out int parsedId))
-            {
-                employeeId = parsedId;
-            }
-            else
-            {
-                employeeId = null;
-            }
-        }
         private void UpdateEmployeeInfoUI(Employee employee)
         {
             txtBoxEmployeeId.Text = employee.EmployeeID.ToString();
@@ -133,22 +122,6 @@ namespace EmployeeManagement.GUI
             }
             // All validations passed
             return true;
-        }
-        private void OpenUserAccountForm(UserAccount userAccount)
-        {
-            FormUserAccount formUserAccount = new FormUserAccount(employeeId.Value);
-            formUserAccount.ShowDialog();
-            this.Close();
-        }
-        private void CreateNewUserAccount()
-        {
-            DialogResult result = MessageBox.Show("No User Account found for this employee. Do you want to create one?", "User Account", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-                FormUserAccount formUserAccount = new FormUserAccount(employeeId.Value);
-                formUserAccount.ShowDialog();
-            }
         }
         #endregion
 
@@ -221,18 +194,33 @@ namespace EmployeeManagement.GUI
         #region Buttons
         private void btnLinkUserAccount_Click(object sender, EventArgs e)
         {
-            UpdateEmployeeIdFromTextBox();
-
-            UserAccount userAccount = new UserAccount().SearchUserAccountByEmployeeId(employeeId.Value);
+            if (!int.TryParse(txtBoxEmployeeId.Text.Trim(), out int parsedId))
+            {
+                MessageBox.Show("Invalid Employee ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // Attempt to find an existing user account for this employee
+            UserAccount userAccount = new UserAccount().SearchUserAccountByEmployeeId(parsedId);
+            // If a user account exists, open the form in edit mode
             if (userAccount != null && userAccount.UserID > 0)
             {
-                OpenUserAccountForm(userAccount);
+                FormUserAccount formUserAccount = new FormUserAccount(parsedId, false);
+                formUserAccount.ShowDialog();
+                this.Close();
             }
+            // If no user account exists, ask if one should be created
             else
             {
-                CreateNewUserAccount();
+                DialogResult result = MessageBox.Show("No User Account found for this employee. Do you want to create one?", "User Account", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    FormUserAccount formUserAccount = new FormUserAccount(parsedId, true);
+                    formUserAccount.ShowDialog();
+                    this.Close();
+                }
             }
         }
+
         private void btnListAllEmployees_Click(object sender, EventArgs e)
         {
             ClearAll();

@@ -10,19 +10,23 @@ namespace Hi_TechLibrary.DAL.ADO
 {
     public static class UserAccountDB
     {
-        public static void SaveRecord(UserAccount userAccount)
+        public static int SaveRecord(UserAccount userAccount)
         {
             using (SqlConnection conn = UtilityDB.GetDBConnection())
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO UserAccounts (EmployeeID, Username, Password, UserRole, StatusID, MustChangePassword) " +
-                                                          "VALUES (@EmployeeID, @Username, @Password, @UserRole, @StatusID, @MustChangePassword)", conn);
+                string insertQuery = "INSERT INTO UserAccounts (EmployeeID, Username, Password, UserRole, StatusID, MustChangePassword) " +
+                                     "VALUES (@EmployeeID, @Username, @Password, @UserRole, @StatusID, @MustChangePassword); " +
+                                     "SELECT SCOPE_IDENTITY();"; // Query to get the last inserted identity
+                SqlCommand cmd = new SqlCommand(insertQuery, conn);
                 cmd.Parameters.AddWithValue("@EmployeeID", userAccount.EmployeeID);
                 cmd.Parameters.AddWithValue("@Username", userAccount.Username);
                 cmd.Parameters.AddWithValue("@Password", userAccount.Password);
                 cmd.Parameters.AddWithValue("@UserRole", userAccount.UserRole.ToString());
                 cmd.Parameters.AddWithValue("@StatusID", userAccount.StatusID);
                 cmd.Parameters.AddWithValue("@MustChangePassword", userAccount.MustChangePassword);
-                cmd.ExecuteNonQuery();
+                // Execute the command and get the inserted ID.
+                object result = cmd.ExecuteScalar();
+                return Convert.ToInt32(result); // Returns the ID of the newly created user account.
             }
         }
 
@@ -63,37 +67,34 @@ namespace Hi_TechLibrary.DAL.ADO
 
         public static UserAccount SearchByEmployeeId(int id)
         {
-            UserAccount user = new UserAccount();
             using (SqlConnection conn = UtilityDB.GetDBConnection())
             {
                 SqlCommand cmd = new SqlCommand("SELECT * FROM UserAccounts WHERE EmployeeID = @ID", conn);
                 cmd.Parameters.AddWithValue("@ID", id);
                 SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+                if (reader.Read()) // If a record is found
                 {
-                    user.UserID = Convert.ToInt32(reader["UserID"]);
-                    user.EmployeeID = Convert.ToInt32(reader["EmployeeID"]);
-                    user.Username = reader["Username"].ToString();
-                    user.Password = reader["Password"].ToString();
-                    // Convert the UserRole from string to UserRole enum
-                    string roleString = reader["UserRole"].ToString();
-                    if (Enum.TryParse<UserRole>(roleString, out UserRole role))
+                    UserAccount user = new UserAccount
                     {
-                        user.UserRole = role;
-                    }
-                    else
-                    {
-                        user.UserRole = UserRole.Default;
-                    }
-                    user.DateCreated = Convert.ToDateTime(reader["DateCreated"]);
-                    user.DateModified = reader["DateModified"] as DateTime?;
-                    user.StatusID = Convert.ToInt32(reader["StatusID"]);
-                    user.MustChangePassword = Convert.ToBoolean(reader["MustChangePassword"]);
+                        UserID = Convert.ToInt32(reader["UserID"]),
+                        EmployeeID = Convert.ToInt32(reader["EmployeeID"]),
+                        Username = reader["Username"].ToString(),
+                        Password = reader["Password"].ToString(),
+                        // Convert the UserRole from string to UserRole enum
+                        UserRole = Enum.TryParse<UserRole>(reader["UserRole"].ToString(), out UserRole role) ? role : UserRole.Default,
+                        DateCreated = Convert.ToDateTime(reader["DateCreated"]),
+                        DateModified = reader["DateModified"] as DateTime?,
+                        StatusID = Convert.ToInt32(reader["StatusID"]),
+                        MustChangePassword = Convert.ToBoolean(reader["MustChangePassword"])
+                    };
+                    return user; // Return the populated UserAccount object
+                }
+                else // If no record is found
+                {
+                    return null; // Return null to indicate no user found
                 }
             }
-            return user;
         }
-
         public static UserAccount SearchByUserAccountId(int id)
         {
             UserAccount user = new UserAccount();

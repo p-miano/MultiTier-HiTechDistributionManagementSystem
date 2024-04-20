@@ -365,7 +365,6 @@ namespace InventoryManager.GUI
                 // Retrieve the author's details
                 var author = authorController.GetAuthorById(selectedAuthorId);
                 var authorItem = new AuthorItem(author.AuthorID, $"{author.FirstName} {author.LastName}");
-
                 // Add to ListBox if not already added
                 if (!listAuthors.Items.Cast<AuthorItem>().Any(ai => ai.AuthorID == authorItem.AuthorID))
                 {

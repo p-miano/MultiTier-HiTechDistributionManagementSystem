@@ -9,6 +9,7 @@ namespace Hi_TechLibrary.BLL.ADO
     public enum UserRole
     {
         Administrator,
+        MISManager,
         SalesManager,
         InventoryController,
         OrderClerk,

@@ -23,13 +23,21 @@ namespace EmployeeManagement.GUI
             SetInitialState();
         }
         // Overloaded constructor to receive the employeeId from the EmployeeManagement form
-        public FormUserAccount(int employeeId)
+        public FormUserAccount(int employeeId, bool isNewAccount)
         {
-            this.employeeId = employeeId;
             InitializeComponent();
+            PopulateUserRoleComboBox();
             FillEmployeeInfo(employeeId);
-            FillUserAccountInfoUsingEmployeeId(employeeId);
-            SetStateAfterSuccessfulSearch();
+            if (isNewAccount)
+            {
+                SetStateForCreatingNewUser();
+            }
+            else
+            {
+                FillUserAccountInfoUsingEmployeeId(employeeId);
+                SetStateAfterSuccessfulSearch();
+            }
+            this.employeeId = employeeId;
         }
 
         #region Form Utilities
@@ -38,7 +46,7 @@ namespace EmployeeManagement.GUI
             btnUpdate.Enabled = false;
             btnDeleteUserAccount.Enabled = false;
             btnClearAll.Enabled = false;
-            btnAddNewUserAccount.Enabled = false;
+            btnAddNewUserAccount.Enabled = true;
             btnSearch.Enabled = true;
             btnListAllUsers.Enabled = true;
             txtBoxEmployeeId.ReadOnly = true;
@@ -67,6 +75,22 @@ namespace EmployeeManagement.GUI
             SetInitialState();
             btnListAllUsers.Enabled = true;
         }
+        private void SetStateForCreatingNewUser()
+        {
+            btnUpdate.Enabled = false;
+            btnDeleteUserAccount.Enabled = false;
+            btnClearAll.Enabled = true;
+            btnAddNewUserAccount.Enabled = true;
+            btnSearch.Enabled = true;
+            btnListAllUsers.Enabled = true;
+            txtBoxEmployeeId.ReadOnly = true;
+            txtBoxFirstName.ReadOnly = true;
+            txtBoxLastName.ReadOnly = true;
+            txtBoxEmail.ReadOnly = true;
+            txtBoxPosition.ReadOnly = true;
+            txtBoxUsername.ReadOnly = false;
+            cmbBoxUserRole.Enabled = true;
+        }
         private void FillEmployeeInfo(int employeeId)
         {
             Employee employee = new Employee().SearchEmployeeById(employeeId);
@@ -86,11 +110,9 @@ namespace EmployeeManagement.GUI
             if (userAccount != null)
             {
                 txtBoxUserId.Text = userAccount.UserID.ToString();
-                txtBoxUsername.Text = userAccount.Username;
-                PopulateUserRoleComboBox();
+                txtBoxUsername.Text = userAccount.Username;                
                 foreach (var item in cmbBoxUserRole.Items)
                 {
-                    // Assuming Utilities.GetEnumDescription correctly returns a string that matches the combo box items
                     if (item.ToString() == EnumUtilities.GetEnumDescription(userAccount.UserRole))
                     {
                         cmbBoxUserRole.SelectedItem = item;
@@ -231,17 +253,20 @@ namespace EmployeeManagement.GUI
                     string roleWithoutSpaces = cmbBoxUserRole.SelectedItem.ToString().Replace(" ", "");
                     // Parse the modified string to the UserRole enum
                     UserRole selectedRole = (UserRole)Enum.Parse(typeof(UserRole), roleWithoutSpaces);
+                    // Generate a random password for the new account
+                    string tempPassword = UserAccount.GenerateRandomPassword();
                     UserAccount userAccount = new UserAccount
                     {
                         EmployeeID = Convert.ToInt32(txtBoxEmployeeId.Text.Trim()),
                         Username = txtBoxUsername.Text.Trim(),
-                        Password = UserAccount.GenerateRandomPassword(),
+                        Password = tempPassword,
                         UserRole = selectedRole,
                         StatusID = 1, // Default status is Active
                         MustChangePassword = true // New users must change their password
                     };
-                    userAccount.SaveUserAccount(userAccount);
-                    MessageBox.Show("User account saved successfully. A temporary password was created and needs to be changed at first login.", "Save User Account");
+                    int newUserId = userAccount.SaveUserAccount(userAccount);
+                    txtBoxUserId.Text = newUserId.ToString();
+                    MessageBox.Show($"User account for '{userAccount.Username}' was successfully created with a temporary password: {tempPassword}. Please ensure to change it on the first login.", "Save User Account", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {

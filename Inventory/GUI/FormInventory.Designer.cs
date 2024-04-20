@@ -105,9 +105,9 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(306, 36);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(377, 29);
+            this.lblTitle.Size = new System.Drawing.Size(275, 29);
             this.lblTitle.TabIndex = 15;
-            this.lblTitle.Text = "InventoryManager Management";
+            this.lblTitle.Text = "Inventory Management";
             // 
             // panelBottom
             // 
@@ -615,13 +615,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ControlBox = false;
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelTitle);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormInventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormInventory";
+            this.Text = "Inventory Management";
             this.panelTitle.ResumeLayout(false);
             this.panelTitle.PerformLayout();
             this.panelBottom.ResumeLayout(false);

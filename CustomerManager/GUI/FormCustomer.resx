@@ -117,13 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblWelcomeMessage.Text" xml:space="preserve">
-    <value>Welcome to the Hi-Tech Distribution Management Portal!
-
-At Hi-Tech Distribution Inc., we pride ourselves on enhancing the academic journey by supplying computer science literature to colleges and universities across Quebec. Your role is crucial in helping us fulfill our commitment to education and excellence.
-
-As you navigate through the system, remember that your contributions drive our success and impact countless learners and educators. Should you need any assistance or encounter any issues, please don't hesitate to reach out to the IT support team.
-
-Thank you for your dedication and hard work. Let's continue to make a significant impact together!</value>
-  </data>
 </root>

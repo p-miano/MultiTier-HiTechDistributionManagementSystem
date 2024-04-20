@@ -23,6 +23,12 @@ namespace InventoryManager.GUI
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            // check if all fields are filled
+            if (string.IsNullOrWhiteSpace(txtFirstName.Text) || string.IsNullOrWhiteSpace(txtLastName.Text) || string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             Authors newAuthor = new Authors
             {
                 FirstName = txtFirstName.Text,
@@ -33,6 +39,18 @@ namespace InventoryManager.GUI
             CreatedAuthorId = newAuthor.AuthorID;
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtEmail.Text = "";
         }
     }
 }
