@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9a4be7c138e1442eaf53a0450896c652" Name="Diagram1">
+      <Diagram DiagramId="9a4be7c138e1442eaf53a0450896c652" Name="Diagram1" ZoomLevel="94">
         <EntityTypeShape EntityType="HiTechDBModel.Authors" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HiTechDBModel.Books" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HiTechDBModel.Categories" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
@@ -12,8 +12,8 @@
         <EntityTypeShape EntityType="HiTechDBModel.Employees" Width="1.5" PointX="8" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="HiTechDBModel.OrderDetails" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HiTechDBModel.Orders" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HiTechDBModel.Positions" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HiTechDBModel.Publishers" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HiTechDBModel.Positions" Width="1.5" PointX="7.375" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HiTechDBModel.Publishers" Width="1.5" PointX="7.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HiTechDBModel.Status" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HiTechDBModel.UserAccounts" Width="1.5" PointX="13.25" PointY="7.125" IsExpanded="true" />
         <AssociationConnector Association="HiTechDBModel.FK__Authors__StatusI__3D5E1FD2" ManuallyRouted="false" />
