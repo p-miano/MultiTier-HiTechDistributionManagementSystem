@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Hi-Tech Order Management System is a Windows Forms Application designed to manage the inventory and orders for Hi-Tech Distribution Inc., a fictioal company that supplies computer science books to colleges and universities in Quebec. This project was developed as part of the Multi-tier Applications Development course at the LaSalle College during the Winter 2024 session.
+The Hi-Tech Order Management System is a Windows Forms Application designed to manage the inventory and orders for Hi-Tech Distribution Inc., a fictional company that supplies computer science books to colleges and universities in Quebec. This project was developed as part of the Multi-tier Applications Development course at the LaSalle College during the Winter 2024 session.
 
 ## Features
 
