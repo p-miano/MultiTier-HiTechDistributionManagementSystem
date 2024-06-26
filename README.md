@@ -39,23 +39,28 @@ The Hi-Tech Order Management System is a Windows Forms Application designed to m
 
 ## Setup and Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/p-miano/MultiTier-HiTechDistributionManagementSystem.git
-
+1. Clone the repository.
 2. Open the project in Microsoft Visual Studio 2022.
-
 3. Restore NuGet packages.
+4. Update the database connection string in the `app.config` file.
+5. Create the database in SQL Server:
+   - Use the provided SQL script to create the database schema and populate initial data.
+   - Execute the script in SQL Server Management Studio (SSMS).
 
-4. Update the database connection string in the app.config file.
+## Database Setup
 
-5. Build and run the application.
+1. Open SQL Server Management Studio (SSMS).
+2. Connect to your SQL Server instance.
+3. Open the SQL script file provided in the repository (`DatabaseSetup.sql`).
+4. Execute the script to create the database and tables, and to insert initial data.
+5. Update the `app.config` file with your database connection string.
 
-   
 ## Usage
 
 1. Launch the application.
-2. Log in with a valid username and password.
+2. Log in with the following credentials for testing:
+   - **Username:** paulaMiano
+   - **Password:** 0123
 3. Navigate through the various user roles and operations to manage books, customers, and orders.
 
 
