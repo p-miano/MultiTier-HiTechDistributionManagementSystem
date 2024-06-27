@@ -1,4 +1,4 @@
-# Hi-Tech Order Management System
+# Hi-Tech Distribution Management System
 
 ## Overview
 
