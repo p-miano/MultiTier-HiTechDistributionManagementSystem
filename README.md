@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Hi-Tech Distribution Management System is a Windows Forms Application designed to manage the inventory and orders for Hi-Tech Distribution Inc., a fictional company that supplies computer science books to colleges and universities in Quebec. This project was developed as part of the Multi-tier Applications Development course at the LaSalle College during the Winter 2024 session.
+Windows application developed to manage inventory and orders for a fictional company supplying computer science books to universities. Built with Microsoft Visual Studio 2022, using C# and SQL Server 2019. The application leverages ADO.NET for both connected and disconnected database operations and implements Entity Framework for order management and secure user authentication via username and password.
 
 ## Features
 
